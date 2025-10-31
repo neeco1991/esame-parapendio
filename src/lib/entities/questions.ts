@@ -1900,7 +1900,7 @@ const questions: Questions = [
 	{
 		id: '2140',
 		section: 'AERODINAMICA',
-		text: "Un'ala stalla normally a diversi angoli d'incidenza se varia la velocità?",
+		text: "Un'ala stalla normalmente a diversi angoli d'incidenza se varia la velocità?",
 		answers: [
 			'Si, infatti lo stallo dipende solo dalla velocità.',
 			"No, lo stallo non dipende dalla velocità ma solo dall'angolo d'incidenza.",

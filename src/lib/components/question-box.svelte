@@ -82,7 +82,7 @@
 					<span>{currentQuestion.id}</span>
 				</div>
 
-				<h2 class="mb-4 text-3xl leading-tight font-semibold">
+				<h2 class="mb-4 text-2xl leading-tight font-semibold">
 					{currentQuestion.text}
 				</h2>
 			</div>
@@ -93,7 +93,7 @@
 						<Button
 							variant="outline"
 							class={cn(
-								'h-auto min-h-10 justify-start text-left whitespace-normal ',
+								'h-auto min-h-10 justify-start text-left text-xl whitespace-normal',
 								getButtonClass(index)
 							)}
 							disabled={isAnswered}

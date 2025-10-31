@@ -2,8 +2,14 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { ModeWatcher } from 'mode-watcher';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	onMount(() => {
+		injectAnalytics();
+	});
 </script>
 
 <svelte:head>

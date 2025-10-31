@@ -2174,7 +2174,7 @@ const questions: Questions = [
 	{
 		id: '5006',
 		section: 'METEOROLOGIA E AEROLOGIA',
-		text: "Quali sono le caratteristiche fisiche dell'aria la cui combinazione o variazione dà luogo normally ai fenomeni meteorologici?",
+		text: "Quali sono le caratteristiche fisiche dell'aria la cui combinazione o variazione dà luogo normalmente ai fenomeni meteorologici?",
 		answers: [
 			'Pressione, temperatura e densità.',
 			'Pressione, velocità del vento e densità.',
@@ -3243,7 +3243,7 @@ const questions: Questions = [
 		text: 'Può una brezza di valle essere tanto forte da costituire un rischio per i praticanti del Volo Libero?',
 		answers: [
 			'Si, particolarmente in corrispondenza delle creste spartiacque.',
-			'Si, particularly in corrispondenza di strozzature o svolte a gomito della valle e del fondo valle stesso, per effetto Venturi.',
+			'Si, particolarmente in corrispondenza di strozzature o svolte a gomito della valle e del fondo valle stesso, per effetto Venturi.',
 			'No, per nessun motivo.'
 		],
 		correct_answer_index: 1
@@ -4739,7 +4739,7 @@ const questions: Questions = [
 	{
 		id: '9020',
 		section: 'SICUREZZA DEL VOLO',
-		text: 'Il vento è aumentato tanto da impedirci di atterrare normally. Ci vediamo costretti a farlo in un bosco. Quale tecnica è bene adottare?',
+		text: 'Il vento è aumentato tanto da impedirci di atterrare normalmente. Ci vediamo costretti a farlo in un bosco. Quale tecnica è bene adottare?',
 		answers: [
 			"Atterrare controvento sulla chioma degli alberi, proteggersi il busto e il capo con braccia e mani nella successiva caduta, appena arrestata quest'ultima afferrare saldamente il ramo più vicino.",
 			"Atterrare controvento scegliendo di farlo in prossimità del suolo quanto possibile e nello spazio compreso tra due tronchi d'albero, iniziare a raccordare solo all'ultimo momento.",
@@ -5329,7 +5329,7 @@ const questions: Questions = [
 // 	{
 // 		id: '1031',
 // 		section: 'NORMATIVA E LEGISLAZIONE',
-// 		text: 'È possibile normally volare con deltaplano e parapendio all\'interno delle zone denominate nelle carte aeronautiche con le lettere P, D ("PAPA", "DELTA")?',
+// 		text: 'È possibile normalmente volare con deltaplano e parapendio all\'interno delle zone denominate nelle carte aeronautiche con le lettere P, D ("PAPA", "DELTA")?',
 // 		answers: ['No.', 'Si, ma solo nei giorni festivi.', 'Si.'],
 // 		correct_answer_index: 0
 // 	},
@@ -6483,7 +6483,7 @@ const questions: Questions = [
 // 	{
 // 		id: '2105',
 // 		section: 'AERODINAMICA',
-// 		text: 'Dove si trova normally il baricentro?',
+// 		text: 'Dove si trova normalmente il baricentro?',
 // 		answers: [
 // 			'Coincide con il baricentro del solo pilota.',
 // 			'Si trova tra il baricentro del pilota e quello della struttura.',
@@ -10025,7 +10025,7 @@ const questions: Questions = [
 // 	{
 // 		id: '9020',
 // 		section: 'SICUREZZA DEL VOLO',
-// 		text: 'Il vento è aumentato tanto da impedirci di atterrare normally. Ci vediamo costretti a farlo in un bosco. Quale tecnica è bene adottare?',
+// 		text: 'Il vento è aumentato tanto da impedirci di atterrare normalmente. Ci vediamo costretti a farlo in un bosco. Quale tecnica è bene adottare?',
 // 		answers: [
 // 			"Atterrare controvento sulla chioma degli alberi, proteggersi il busto e il capo con braccia e mani nella successiva caduta, appena arrestata quest'ultima afferrare saldamente il ramo più vicino.",
 // 			"Atterrare controvento scegliendo di farlo in prossimità del suolo quanto possibile e nello spazio compreso tra due tronchi d'albero, ini ziare a raccordare solo all'ultimo momento.",

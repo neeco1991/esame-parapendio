@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import QuestionBox from '$lib/components/question-box.svelte';
+	import ThemeButton from '$lib/components/theme/theme-button.svelte';
+</script>
+
+<div class="flex w-full justify-end">
+	<ThemeButton />
+</div>
+<div class="mt-2 h-full">
+	<QuestionBox />
+</div>

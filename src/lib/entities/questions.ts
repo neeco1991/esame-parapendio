@@ -799,7 +799,7 @@ const questions: Questions = [
 	{
 		id: '2033',
 		section: 'AERODINAMICA',
-		text: 'La legge di Bernoully dice:',
+		text: 'La legge di Bernoulli dice:',
 		answers: [
 			'che la somma della pressione statica e dinamica del fluido non è costante.',
 			'che la somma della pressione statica e dinamica del fluido è costante.',
@@ -810,7 +810,7 @@ const questions: Questions = [
 	{
 		id: '2034',
 		section: 'AERODINAMICA',
-		text: 'Che cosa mette in evidenza la legge di Bernoully in un tubo di Venturi a portata costante?',
+		text: 'Che cosa mette in evidenza la legge di Bernoulli in un tubo di Venturi a portata costante?',
 		answers: [
 			'Che variando la sezione del tubo, pressione e velocità del fluido rimangono invariate.',
 			'Che variando la sezione del tubo, varia solo la pressione dinamica del fluido.',
@@ -865,7 +865,7 @@ const questions: Questions = [
 	{
 		id: '2039',
 		section: 'AERODINAMICA',
-		text: "L'ala di un deltaplano o di un parapendio utilizza il principio di Bernoully applicato a un tubo Venturi?",
+		text: "L'ala di un deltaplano o di un parapendio utilizza il principio di Bernoulli applicato a un tubo Venturi?",
 		answers: ['Si, ma non nel volo in termica.', 'Si.', 'No.'],
 		correct_answer_index: 1
 	},
@@ -3266,7 +3266,7 @@ const questions: Questions = [
 		answers: [
 			'vento forte a scorrimento laminare.',
 			'vento forte anche a raffiche con presenza di rotori con asse pressoché parallelo alle linee di massima pendenza dei pendii laterali della valle stessa.',
-			"vento forte in presenza di rotori di diametro minimo con asse generally parallelo all'asse della valle stessa."
+			"vento forte in presenza di rotori di diametro minimo con asse generalmente parallelo all'asse della valle stessa."
 		],
 		correct_answer_index: 1
 	},
@@ -4231,7 +4231,7 @@ const questions: Questions = [
 	{
 		id: '7071',
 		section: 'TECNICA DI PILOTAGGIO',
-		text: "Quale errore di manovra causa generally una scivolata d'ala del deltaplano?",
+		text: "Quale errore di manovra causa generalmente una scivolata d'ala del deltaplano?",
 		answers: [
 			"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
 			"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
@@ -4873,7 +4873,7 @@ const questions: Questions = [
 		section: 'SICUREZZA DEL VOLO',
 		text: "Configurazioni inusuali del parapendio. Chiusura frontale del bordo d'attacco, tendenza dell'ala a passare bruscamente dietro al pilota. Il pilota dovrà prima di tutto rilasciare entrambi i freni per poi tenersi pronto a controllare l'abbattimento in avanti dell'ala:",
 		answers: [
-			"corretto, la riapertura dell'ala se si agisce rilasciando simmetricamente i freni generally non è problematica, ma lo possono essere i pendolamenti che ne conseguono.",
+			"corretto, la riapertura dell'ala se si agisce rilasciando simmetricamente i freni generalmente non è problematica, ma lo possono essere i pendolamenti che ne conseguono.",
 			"corretto, anche se i pendolamenti che conseguono alla riapertura dell'ala non costituiscono mai un problema.",
 			"errato, è necessario comunque attendere che l'ala si riapra da sola per evitare inutili pendolamenti e se ciò non avviene usare al più presto il paracadute di soccorso."
 		],
@@ -5759,7 +5759,7 @@ const questions: Questions = [
 // 	{
 // 		id: '2033',
 // 		section: 'AERODINAMICA',
-// 		text: 'La legge di Bernoully dice:',
+// 		text: 'La legge di Bernoulli dice:',
 // 		answers: [
 // 			'che la somma della pressione statica e dina mica del fluido non è costante.',
 // 			'che la somma della pressione statica e dina mica del fluido è costante.',
@@ -5770,7 +5770,7 @@ const questions: Questions = [
 // 	{
 // 		id: '2034',
 // 		section: 'AERODINAMICA',
-// 		text: 'Che cosa mette in evidenza la legge di Bernoully in un tubo di Venturi a portata costante?',
+// 		text: 'Che cosa mette in evidenza la legge di Bernoulli in un tubo di Venturi a portata costante?',
 // 		answers: [
 // 			'Che variando la sezione del tubo, pressione e velocità del fluido rimangono invariate.',
 // 			'Che variando la sezione del tubo, varia solo la pressione dinamica del fluido.',
@@ -5825,7 +5825,7 @@ const questions: Questions = [
 // 	{
 // 		id: '2039',
 // 		section: 'AERODINAMICA',
-// 		text: "L'ala di un deltaplano o di un parapendio utilizza il principio di Bernoully applicato a un tubo Venturi?",
+// 		text: "L'ala di un deltaplano o di un parapendio utilizza il principio di Bernoulli applicato a un tubo Venturi?",
 // 		answers: ['Si, ma non nel volo in termica.', 'Si.', 'No.'],
 // 		correct_answer_index: 1
 // 	},

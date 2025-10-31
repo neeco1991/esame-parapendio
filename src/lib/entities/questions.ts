@@ -187,7 +187,7 @@ const questions: Questions = [
 	{
 		id: '1013',
 		section: 'NORMATIVA E LEGISLAZIONE',
-		text: "Le tabelle chiamate effemeridi, sulle quali si possono trovare tutti i dati concernenti le posizioni in cielo delle stelle e dei pianeti during l'anno, possono essere utili a chi pratica il Volo Libero perché:",
+		text: "Le tabelle chiamate effemeridi, sulle quali si possono trovare tutti i dati concernenti le posizioni in cielo delle stelle e dei pianeti durante l'anno, possono essere utili a chi pratica il Volo Libero perché:",
 		answers: [
 			'può essere utile condurre una navigazione stellare in certe condizioni.',
 			"può essere utile conoscere con esattezza l'altezza del sole sull'orizzonte a una certa ora e in un certo giorno dell'anno per stabilire la propria posizione.",
@@ -1345,7 +1345,7 @@ const questions: Questions = [
 	{
 		id: '2087',
 		section: 'AERODINAMICA',
-		text: 'Il peso del sistema ala-pilota, cui during il volo si oppone la risultante aerodinamica, è una forza verticale diretta verso il basso, che si scompone in:',
+		text: 'Il peso del sistema ala-pilota, cui durante il volo si oppone la risultante aerodinamica, è una forza verticale diretta verso il basso, che si scompone in:',
 		answers: [
 			'trazione nella direzione della traiettoria di volo e peso apparente perpendicolarmente alla stessa.',
 			'trazione perpendicolarmente alla traiettoria di volo e peso apparente nella direzione della stessa.',
@@ -1452,7 +1452,7 @@ const questions: Questions = [
 		section: 'AERODINAMICA',
 		text: "Che cosa s'intende per fattore di carico?",
 		answers: [
-			"Un fattore numerico capace di indicare quante volte il peso del sistema ala-pilota varia per effetto dell'accelerazione centrifuga in virata o di altre accelerazioni positive o negative during le manovre.",
+			"Un fattore numerico capace di indicare quante volte il peso del sistema ala-pilota varia per effetto dell'accelerazione centrifuga in virata o di altre accelerazioni positive o negative durante le manovre.",
 			'Un fattore numerico capace di indicare di quante volte aumenta la resistenza aerodinamica in virata per effetto della forza centrifuga.',
 			'Un fattore numerico caratteristico di un tipo di deltaplano o parapendio collegato alla robustezza delle sue strutture verificata in tutti i tipi di manovra in volo.'
 		],
@@ -1461,7 +1461,7 @@ const questions: Questions = [
 	{
 		id: '2099',
 		section: 'AERODINAMICA',
-		text: 'During una virata al sistema ala-pilota viene applicata, per effetto della forza centrifuga, un\'accelerazione pari a due "G". Si può affermare che:',
+		text: 'Durante una virata al sistema ala-pilota viene applicata, per effetto della forza centrifuga, un\'accelerazione pari a due "G". Si può affermare che:',
 		answers: [
 			'il fattore il carico rimane invariato.',
 			'il fattore di carico è raddoppiato, ma è come se il peso del sistema fosse invariato.',
@@ -1472,7 +1472,7 @@ const questions: Questions = [
 	{
 		id: '2100',
 		section: 'AERODINAMICA',
-		text: 'Se during il volo per qualche motivo il fattore di carico raddoppia, il carico alare',
+		text: 'Se durante il volo per qualche motivo il fattore di carico raddoppia, il carico alare',
 		answers: ['può anche rimanere invariato.', 'raddoppia.', 'viene dimezzato.'],
 		correct_answer_index: 1
 	},
@@ -2072,7 +2072,7 @@ const questions: Questions = [
 	{
 		id: '4006',
 		section: 'FISIOPATOLOGIA DEL VOLO',
-		text: 'During il volo il corpo umano è sottoposto a vari tipi di accelerazione. Quali sono meglio sopportate tra quelle positive (testa-piedi) e quelle negative (piedi-testa)?',
+		text: 'Durante il volo il corpo umano è sottoposto a vari tipi di accelerazione. Quali sono meglio sopportate tra quelle positive (testa-piedi) e quelle negative (piedi-testa)?',
 		answers: ['Entrambe in uguale misura.', 'Quelle negative.', 'Quelle positive.'],
 		correct_answer_index: 2
 	},
@@ -2081,9 +2081,9 @@ const questions: Questions = [
 		section: 'FISIOPATOLOGIA DEL VOLO',
 		text: 'Le accelerazioni positive (testa-piedi) corrispondono a un aumento dei "G" o meglio a un aumento fittizio dell\'accelerazione di gravità. Quando si possono manifestare in volo?',
 		answers: [
-			'During virate corrette.',
-			'During il volo su traiettoria rettilinea con forte pendenza.',
-			'During brusche manovre di picchiata.'
+			'Durante virate corrette.',
+			'Durante il volo su traiettoria rettilinea con forte pendenza.',
+			'Durante brusche manovre di picchiata.'
 		],
 		correct_answer_index: 0
 	},
@@ -2092,9 +2092,9 @@ const questions: Questions = [
 		section: 'FISIOPATOLOGIA DEL VOLO',
 		text: 'Le accelerazioni negative (piedi-testa) corrispondono a una diminuzione dei "G" o meglio a una diminuzione fittizia della accelerazione di gravità. Quando si possono manifestare in volo?',
 		answers: [
-			'During una brusca richiamata.',
-			'During brusche manovre di picchiata.',
-			'During il volo su traiettoria rettilinea con forte pendenza.'
+			'Durante una brusca richiamata.',
+			'Durante brusche manovre di picchiata.',
+			'Durante il volo su traiettoria rettilinea con forte pendenza.'
 		],
 		correct_answer_index: 1
 	},
@@ -2305,7 +2305,7 @@ const questions: Questions = [
 		text: "L'evaporazione dell'acqua è un processo endotermico?",
 		answers: [
 			'No, non è un processo endotermico.',
-			"Si, infatti la temperatura dell'acqua liquida si abbassa during l'evaporazione, a meno che non sia fornito calore dall'ambiente circostante.",
+			"Si, infatti la temperatura dell'acqua liquida si abbassa durante l'evaporazione, a meno che non sia fornito calore dall'ambiente circostante.",
 			"Si, infatti la temperatura dell'acqua liquida s'innalza perché l'evaporazione è un processo che libera calore."
 		],
 		correct_answer_index: 1
@@ -2600,7 +2600,7 @@ const questions: Questions = [
 	{
 		id: '5048',
 		section: 'METEOROLOGIA E AEROLOGIA',
-		text: "During una salita effettuata nella troposfera la temperatura dell'aria varia nel modo seguente:",
+		text: "Durante una salita effettuata nella troposfera la temperatura dell'aria varia nel modo seguente:",
 		answers: ['mediamente aumenta.', 'rimane mediamente costante.', 'mediamente diminuisce.'],
 		correct_answer_index: 2
 	},
@@ -2881,7 +2881,7 @@ const questions: Questions = [
 	{
 		id: '5075',
 		section: 'METEOROLOGIA E AEROLOGIA',
-		text: 'During le ore più calde su quale tipo di terreno ci si può attendere con più probabilità di trovare movimento convettivo di aria?',
+		text: 'Durante le ore più calde su quale tipo di terreno ci si può attendere con più probabilità di trovare movimento convettivo di aria?',
 		answers: ['Su prati verdi.', 'Su una superficie acquea.', 'Su un terreno roccioso.'],
 		correct_answer_index: 2
 	},
@@ -2947,7 +2947,7 @@ const questions: Questions = [
 		answers: [
 			'si formi qualche nube cumuliforme con base quasi sul terreno.',
 			'la visibilità aumenti considerevolmente in corrispondenza del suolo stesso.',
-			'si formi nebbia al suolo during le ore notturne.'
+			'si formi nebbia al suolo durante le ore notturne.'
 		],
 		correct_answer_index: 2
 	},
@@ -3199,7 +3199,7 @@ const questions: Questions = [
 		text: 'Oltre al vento di gradiente è tipica del microclima di zone vallive e montuose la presenza di:',
 		answers: [
 			'brezze di monte la sera e brezze di valle il mattino.',
-			'brezze di monte during la notte e il mattino presto, brezze di valle during le ore calde della giornata.',
+			'brezze di monte durante la notte e il mattino presto, brezze di valle durante le ore calde della giornata.',
 			"brezze che variano d'intensità e direzione in funzione del luogo, ma sono costanti a tutte le ore del giorno e della notte."
 		],
 		correct_answer_index: 1
@@ -3207,11 +3207,11 @@ const questions: Questions = [
 	{
 		id: '5105',
 		section: 'METEOROLOGIA E AEROLOGIA',
-		text: 'In zone marittime during la giornata, a causa del diverso riscaldamento delle superfici acquee rispetto alle superfici terrestri, si generano:',
+		text: 'In zone marittime durante la giornata, a causa del diverso riscaldamento delle superfici acquee rispetto alle superfici terrestri, si generano:',
 		answers: [
-			'brezze dal mare during le ore calde della giornata, e viceversa during la notte.',
-			'brezze da terra during le ore calde della giornata e viceversa during la notte.',
-			'solo brezze dal mare during le ore calde della giornata e non viceversa during la notte.'
+			'brezze dal mare durante le ore calde della giornata, e viceversa durante la notte.',
+			'brezze da terra durante le ore calde della giornata e viceversa durante la notte.',
+			'solo brezze dal mare durante le ore calde della giornata e non viceversa durante la notte.'
 		],
 		correct_answer_index: 0
 	},
@@ -3229,7 +3229,7 @@ const questions: Questions = [
 	{
 		id: '5107',
 		section: 'METEOROLOGIA E AEROLOGIA',
-		text: "E' possibile che during la giornata a causa della brezza di valle si formino nubi cumuliformi anche imponenti?",
+		text: "E' possibile che durante la giornata a causa della brezza di valle si formino nubi cumuliformi anche imponenti?",
 		answers: [
 			"Si, perché la brezza solleva aria lungo i pendii montuosi causando possibili fenomeni nuvolosi da sollevamento che in condizioni d'instabilità possono essere anche imponenti.",
 			"Si, perché la brezza si riscalda per attrito col terreno, quindi inizia a salire se in regime d'instabilità causando quindi possibili fenomeni nuvolosi da sollevamento.",
@@ -3463,7 +3463,7 @@ const questions: Questions = [
 	{
 		id: '6009',
 		section: 'STRUMENTI',
-		text: "Che cosa può misurare l'anemometro during un volo?",
+		text: "Che cosa può misurare l'anemometro durante un volo?",
 		answers: [
 			"È lo strumento che in volo misura la velocità all'aria.",
 			'È lo strumento che in volo misura la velocità al suolo.',
@@ -3547,7 +3547,7 @@ const questions: Questions = [
 	{
 		id: '6017',
 		section: 'STRUMENTI',
-		text: 'During il volo, che cosa ci permette di misurare il GPS?',
+		text: 'Durante il volo, che cosa ci permette di misurare il GPS?',
 		answers: ['La velocità al suolo.', "La velocità all'aria.", "L'umidità relativa."],
 		correct_answer_index: 0
 	},
@@ -3764,9 +3764,9 @@ const questions: Questions = [
 		section: 'TECNICA DI PILOTAGGIO',
 		text: 'In presenza di vento meteorologico, come si esegue una virata di 360° la cui traccia al suolo sia più possibile circolare?',
 		answers: [
-			"Variando opportunamente l'inclinazione dell'ala during la virata in funzione della deriva dovuta allo spostamento dell'aria rispetto al suolo.",
-			"Accentuando l'inclinazione laterale dell'ala during la fase della virata con vento in prua.",
-			"Diminuendo l'inclinazione laterale dell'ala during le fasi della virata con vento al traverso."
+			"Variando opportunamente l'inclinazione dell'ala durante la virata in funzione della deriva dovuta allo spostamento dell'aria rispetto al suolo.",
+			"Accentuando l'inclinazione laterale dell'ala durante la fase della virata con vento in prua.",
+			"Diminuendo l'inclinazione laterale dell'ala durante le fasi della virata con vento al traverso."
 		],
 		correct_answer_index: 0
 	},
@@ -3886,7 +3886,7 @@ const questions: Questions = [
 		text: 'Quando è necessario tenere particolarmente conto del gradiente del vento?',
 		answers: [
 			'Volando in termica.',
-			'In atterraggio o during il volo in prossimità del pendio.',
+			'In atterraggio o durante il volo in prossimità del pendio.',
 			'In decollo perché la velocità del vento sicuramente diminuisce allontanandosi dal suolo.'
 		],
 		correct_answer_index: 1
@@ -3916,7 +3916,7 @@ const questions: Questions = [
 	{
 		id: '7032',
 		section: 'TECNICA DI PILOTAGGIO',
-		text: "During la fase finale dell'atterraggio con vento forte in deltaplano o parapendio il pilota deve:",
+		text: "Durante la fase finale dell'atterraggio con vento forte in deltaplano o parapendio il pilota deve:",
 		answers: [
 			"attendersi una traiettoria ripida, aumentare la velocità all'aria al massimo per minimizzare l'effetto del gradiente del vento o del wind shear, raccordare moderatamente e solo in prossimità del suolo.",
 			'cercare di assumere la traiettoria più ripida possibile mantenendo la velocità di minimo tasso di caduta, in previsione del gradiente di vento raccordare moderatamente e solo in prossimità del suolo.',
@@ -3964,14 +3964,14 @@ const questions: Questions = [
 		answers: [
 			"Dopo aver gonfiato, sollevato e frenato quanto basta l'ala in fase di decollo.",
 			'Subito dopo essere atterrati prima di riporre il parapendio.',
-			"During la preparazione dell'ala per il decollo."
+			"Durante la preparazione dell'ala per il decollo."
 		],
 		correct_answer_index: 2
 	},
 	{
 		id: '7037',
 		section: 'TECNICA DI PILOTAGGIO',
-		text: 'During un volo di cross non sempre è possibile atterrare dove previsto. Il pilota dovrebbe conoscere perfettamente:',
+		text: 'Durante un volo di cross non sempre è possibile atterrare dove previsto. Il pilota dovrebbe conoscere perfettamente:',
 		answers: [
 			'la tecnica per atterrare senza inconvenienti in un preciso punto di un pendio o una superficie ridotta.',
 			'le tecniche di sopravvivenza in montagna per salvaguardarsi in attesa di recuperi.',
@@ -4004,7 +4004,7 @@ const questions: Questions = [
 	{
 		id: '7040',
 		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Se ci rendiamo conto che il nostro parapendio è umido, quali accorgimenti dobbiamo adottare during il volo:',
+		text: 'Se ci rendiamo conto che il nostro parapendio è umido, quali accorgimenti dobbiamo adottare durante il volo:',
 		answers: [
 			'effettuare le "orecchie" per scendere più velocemente.',
 			'non ci sono particolari accorgimenti da adottare, perché la vela umida non presenta alcun problema di assetto.',
@@ -4030,7 +4030,7 @@ const questions: Questions = [
 		answers: [
 			'Si, effettuandolo solo in quota indipendentemente dal modo in cui si interviene sui comandi.',
 			'No, tutto ciò che ha a che vedere con lo stallo comunque non può essere effettuato mantenendo adeguati margini di sicurezza in quanto induce sicuramente configurazioni inusuali.',
-			"Si, during un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
+			"Si, durante un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
 		],
 		correct_answer_index: 2
 	},
@@ -4050,7 +4050,7 @@ const questions: Questions = [
 		section: 'TECNICA DI PILOTAGGIO',
 		text: 'In volo con il parapendio può accadere che accidentalmente si raggiunga lo stallo volando troppo lenti. Per una corretta rimessa, il pilota dovrà:',
 		answers: [
-			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bruscamente during l'abbattimento in avanti dell'ala.",
+			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bruscamente durante l'abbattimento in avanti dell'ala.",
 			"a stallo avvenuto mantenere i comandi affondati, attendere guardando verso l'alto il ritorno dell'ala sulla verticale, quindi rilasciare gradualmente e simmetricamente i comandi pronto ad intervenire per gestire il pendolamento in avanti.",
 			'a stallo avvenuto rilasciare dolcemente i comandi, iniziando se possibile una virata per acquisire velocità.'
 		],
@@ -4156,8 +4156,8 @@ const questions: Questions = [
 		section: 'TECNICA DI PILOTAGGIO',
 		text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento sostenuto?',
 		answers: [
-			"During la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
-			"Accertarsi che during il decollo nessuno degli assistenti trattenga l'ala.",
+			"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
+			"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
 			'Provvedere a che gli assistenti spingano adeguatamente la chiglia in fase di decollo.'
 		],
 		correct_answer_index: 1
@@ -4233,9 +4233,9 @@ const questions: Questions = [
 		section: 'TECNICA DI PILOTAGGIO',
 		text: "Quale errore di manovra causa generally una scivolata d'ala del deltaplano?",
 		answers: [
-			"Mancata coordinazione dei movimenti during l'esecuzione di una virata.",
-			"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra during l'esecuzione di una virata.",
-			'Eccessiva spinta sulla barra during una virata.'
+			"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
+			"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
+			'Eccessiva spinta sulla barra durante una virata.'
 		],
 		correct_answer_index: 1
 	},
@@ -4322,8 +4322,8 @@ const questions: Questions = [
 		text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
 		answers: [
 			"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
-			'In finale per l\'atterraggio, during la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
-			"Più tardi possibile during l'apertura per stallare il deltaplano."
+			'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
+			"Più tardi possibile durante l'apertura per stallare il deltaplano."
 		],
 		correct_answer_index: 1
 	},
@@ -4352,7 +4352,7 @@ const questions: Questions = [
 	{
 		id: '8003',
 		section: 'MATERIALI',
-		text: 'During il volo in parapendio sono sottoposti al maggior carico i cordini:',
+		text: 'Durante il volo in parapendio sono sottoposti al maggior carico i cordini:',
 		answers: ['anteriori.', 'posteriori.', 'laterali.'],
 		correct_answer_index: 0
 	},
@@ -4458,7 +4458,7 @@ const questions: Questions = [
 	{
 		id: '8013',
 		section: 'MATERIALI',
-		text: "During l'ultimo volo in deltaplano abbiamo effettuato un atterraggio pesante. Il cross bar ed un montante si sono piegati:",
+		text: "Durante l'ultimo volo in deltaplano abbiamo effettuato un atterraggio pesante. Il cross bar ed un montante si sono piegati:",
 		answers: [
 			'riandiamo in volo avendo sostituito il montante e raddrizzato perfettamente il cross bar.',
 			'riandiamo in volo solo dopo aver sostituito il montante ed il cross bar con ricambi originali.',
@@ -4783,7 +4783,7 @@ const questions: Questions = [
 	{
 		id: '9024',
 		section: 'SICUREZZA DEL VOLO',
-		text: "Se during il decollo in parapendio si constata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
+		text: "Se durante il decollo in parapendio si constata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
 		answers: [
 			'accelerare la corsa agendo sui comandi per ottenere il corretto gonfiaggio prima dello stacco.',
 			'agire sui freni e interrompere il decollo, tenendo presente che il parapendio offre il vantaggio di una possibile interruzione di decollo senza conseguenze.',
@@ -4805,7 +4805,7 @@ const questions: Questions = [
 	{
 		id: '9026',
 		section: 'SICUREZZA DEL VOLO',
-		text: "Se si va in volo con una \"cravatta\", per non esserci accorti during i controlli che uno o più cordini erano disposti sotto l'estradosso con l'ala stesa al suolo e per non aver controllato l'ala accuratamente dopo il gonfiaggio, che cosa dobbiamo attenderci?",
+		text: "Se si va in volo con una \"cravatta\", per non esserci accorti durante i controlli che uno o più cordini erano disposti sotto l'estradosso con l'ala stesa al suolo e per non aver controllato l'ala accuratamente dopo il gonfiaggio, che cosa dobbiamo attenderci?",
 		answers: [
 			'Nulla di significativo a parte un modesto degrado delle prestazioni.',
 			"Una tendenza alla rotazione dell'ala che però è sempre possibile compensare con peso e freno.",
@@ -4816,7 +4816,7 @@ const questions: Questions = [
 	{
 		id: '9027',
 		section: 'SICUREZZA DEL VOLO',
-		text: 'Se during un volo in parapendio si rompe il cordino di un freno, si è in una situazione di emergenza. Come ci si deve comportare?',
+		text: 'Se durante un volo in parapendio si rompe il cordino di un freno, si è in una situazione di emergenza. Come ci si deve comportare?',
 		answers: [
 			'Pilotare con entrambi gli elevatori posteriori trazionandoli con dolcezza e limitatamente allo stretto indispensabile per arrivare in atterraggio.',
 			'Pilotare solo con il freno restante e manovrando meno possibile atterrare immediatamente sul pendio.',
@@ -8123,7 +8123,7 @@ const questions: Questions = [
 // 		answers: [
 // 			'si formi qualche nube cumuliforme con base quasi sul terreno.',
 // 			'la visibilità aumenti considerevolmente in cor rispondenza del suolo stesso.',
-// 			'si formi nebbia al suolo during le ore notturne.'
+// 			'si formi nebbia al suolo durante le ore notturne.'
 // 		],
 // 		correct_answer_index: 2
 // 	},
@@ -8375,7 +8375,7 @@ const questions: Questions = [
 // 		text: 'Oltre al vento di gradiente è tipica del mi croclima di zone vallive e montuose la presenza di:',
 // 		answers: [
 // 			'brezze di monte la sera e brezze di valle il mat tino.',
-// 			'brezze di monte during la notte e il mattino presto, brezze di valle during le ore calde della giornata.',
+// 			'brezze di monte durante la notte e il mattino presto, brezze di valle durante le ore calde della giornata.',
 // 			"brezze che variano d'intensità e direzione in funzione del luogo, ma sono costanti a tutte le ore del giorno e della notte."
 // 		],
 // 		correct_answer_index: 1
@@ -8383,11 +8383,11 @@ const questions: Questions = [
 // 	{
 // 		id: '5105',
 // 		section: 'METEOROLOGIA E AEROLOGIA',
-// 		text: 'In zone marittime during la giornata, a causa del diverso riscaldamento delle superfici ac quee rispetto alle superfici terrestri, si generano:',
+// 		text: 'In zone marittime durante la giornata, a causa del diverso riscaldamento delle superfici ac quee rispetto alle superfici terrestri, si generano:',
 // 		answers: [
-// 			'brezze dal mare during le ore calde della gior nata, e viceversa during la notte.',
-// 			'brezze da terra during le ore calde della gior nata e viceversa during la notte.',
-// 			'solo brezze dal mare during le ore calde della giornata e non viceversa during la notte.'
+// 			'brezze dal mare durante le ore calde della gior nata, e viceversa durante la notte.',
+// 			'brezze da terra durante le ore calde della gior nata e viceversa durante la notte.',
+// 			'solo brezze dal mare durante le ore calde della giornata e non viceversa durante la notte.'
 // 		],
 // 		correct_answer_index: 0
 // 	},
@@ -8405,7 +8405,7 @@ const questions: Questions = [
 // 	{
 // 		id: '5107',
 // 		section: 'METEOROLOGIA E AEROLOGIA',
-// 		text: "E' possibile che during la giornata a causa della brezza di valle si formino nubi cumuli formi anche imponenti?",
+// 		text: "E' possibile che durante la giornata a causa della brezza di valle si formino nubi cumuli formi anche imponenti?",
 // 		answers: [
 // 			"Si, perché la brezza solleva aria lungo i pendii montuosi causando possibili fenomeni nuvolosi da sollevamento che in condizioni d'instabilità possono essere anche imponenti.",
 // 			"Si, perché la brezza si riscalda per attrito col terreno, quindi inizia a salire se in regime d'in stabilità causando quindi possibili fenomeni nu volosi da sollevamento.",
@@ -9257,7 +9257,7 @@ const questions: Questions = [
 // 	{
 // 		id: '7047',
 // 		section: 'TECNICA DI PILOTAGGIO',
-// 		text: 'Se, a gonfiaggio avvenuto, il pilota trat tiene le bretelle anteriori, during la corsa di de collo, è probabile che:',
+// 		text: 'Se, a gonfiaggio avvenuto, il pilota trat tiene le bretelle anteriori, durante la corsa di de collo, è probabile che:',
 // 		answers: [
 // 			'il decollo avvenga con ritardo e sia necessario correre più a lungo.',
 // 			"il decollo debba essere interrotto in quanto l'ala collasserà per chiusura frontale.",
@@ -9316,7 +9316,7 @@ const questions: Questions = [
 // 		answers: [
 // 			'Si, effettuandolo solo in quota indipendente mente dal modo in cui si interviene sui co mandi.',
 // 			'No, tutto ciò che ha a che vedere con lo stallo comunque non può essere effettuato mante nendo adeguati margini di sicurezza in quanto induce sicuramente configurazioni inusuali.',
-// 			"Si, during un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
+// 			"Si, durante un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
 // 		],
 // 		correct_answer_index: 2
 // 	},
@@ -9336,7 +9336,7 @@ const questions: Questions = [
 // 		section: 'TECNICA DI PILOTAGGIO',
 // 		text: 'In volo con il parapendio può accadere che accidentalmente si raggiunga lo stallo volando troppo lenti. Per una corretta rimessa, il pilota do vrà:',
 // 		answers: [
-// 			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bru scamente during l'abbattimento in avanti dell'ala.",
+// 			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bru scamente durante l'abbattimento in avanti dell'ala.",
 // 			"a stallo avvenuto mantenere i comandi affon dati, attendere guardando verso l'alto il ritorno dell'ala sulla verticale, quindi rilasciare gradual mente e simmetricamente i comandi pronto ad intervenire per gestire il pendolamento in avanti.",
 // 			'a stallo avvenuto rilasciare dolcemente i co mandi, iniziando se possibile una virata per ac quisire velocità.'
 // 		],
@@ -9443,7 +9443,7 @@ const questions: Questions = [
 // 		text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento soste nuto?',
 // 		answers: [
 // 			"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
-// 			"Accertarsi che during il decollo nessuno degli assistenti trattenga l'ala.",
+// 			"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
 // 			'Provvedere a che gli assistenti spingano ade guatamente la chiglia in fase di decollo.'
 // 		],
 // 		correct_answer_index: 1
@@ -9519,9 +9519,9 @@ const questions: Questions = [
 // 		section: 'TECNICA DI PILOTAGGIO',
 // 		text: "Quale errore di manovra causa general mente una scivolata d'ala del deltaplano?",
 // 		answers: [
-// 			"Mancata coordinazione dei movimenti during l'esecuzione di una virata.",
-// 			"Mancata coordinazione dei movimenti ed insuf ficiente spinta sulla barra during l'esecuzione di una virata.",
-// 			'Eccessiva spinta sulla barra during una virata.'
+// 			"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
+// 			"Mancata coordinazione dei movimenti ed insuf ficiente spinta sulla barra durante l'esecuzione di una virata.",
+// 			'Eccessiva spinta sulla barra durante una virata.'
 // 		],
 // 		correct_answer_index: 1
 // 	},
@@ -9608,8 +9608,8 @@ const questions: Questions = [
 // 		text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
 // 		answers: [
 // 			"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
-// 			'In finale per l\'atterraggio, during la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
-// 			"Più tardi possibile during l'apertura per stal lare il deltaplano."
+// 			'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
+// 			"Più tardi possibile durante l'apertura per stal lare il deltaplano."
 // 		],
 // 		correct_answer_index: 1
 // 	},
@@ -10069,7 +10069,7 @@ const questions: Questions = [
 // 	{
 // 		id: '9024',
 // 		section: 'SICUREZZA DEL VOLO',
-// 		text: "Se during il decollo in parapendio si con stata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
+// 		text: "Se durante il decollo in parapendio si con stata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
 // 		answers: [
 // 			'accelerare la corsa agendo sui comandi per ot tenere il corretto gonfiaggio prima dello stacco.',
 // 			'agire sui freni e interrompere il decollo, te nendo presente che il parapendio offre il van taggio di una possibile interruzione di decollo senza conseguenze.',
@@ -10091,7 +10091,7 @@ const questions: Questions = [
 // 	{
 // 		id: '9026',
 // 		section: 'SICUREZZA DEL VOLO',
-// 		text: "Se si va in volo con una \"cravatta\", per non esserci accorti during i controlli che uno o più cordini erano disposti sotto l'estradosso con l'ala stesa al suolo e per non aver controllato l'ala accuratamente dopo il gonfiaggio, che cosa dob biamo attenderci?",
+// 		text: "Se si va in volo con una \"cravatta\", per non esserci accorti durante i controlli che uno o più cordini erano disposti sotto l'estradosso con l'ala stesa al suolo e per non aver controllato l'ala accuratamente dopo il gonfiaggio, che cosa dob biamo attenderci?",
 // 		answers: [
 // 			'Nulla di significativo a parte un modesto de grado delle prestazioni.',
 // 			"Una tendenza alla rotazione dell'ala che però è sempre possibile compensare con peso e freno.",
@@ -10102,7 +10102,7 @@ const questions: Questions = [
 // 	{
 // 		id: '9027',
 // 		section: 'SICUREZZA DEL VOLO',
-// 		text: 'Se during un volo in parapendio si rompe il cordino di un freno, si è in una situazione di emergenza. Come ci si deve comportare?',
+// 		text: 'Se durante un volo in parapendio si rompe il cordino di un freno, si è in una situazione di emergenza. Come ci si deve comportare?',
 // 		answers: [
 // 			'Pilotare con entrambi gli elevatori posteriori trazionandoli con dolcezza e limitatamente allo stretto indispensabile per arrivare in atterrag gio.',
 // 			'Pilotare solo con il freno restante e mano vrando meno possibile atterrare immediata mente sul pendio.',

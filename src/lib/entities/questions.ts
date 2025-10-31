@@ -4603,7 +4603,7 @@ const questions: Questions = [
 		text: "Per quale motivo un pilota di modesta esperienza non dovrebbe volare con un'ala ad alte prestazioni anche se giudicata facile e sicura da piloti più esperti?",
 		answers: [
 			'Perché le ali ad alte prestazioni sono comunque insicure anche se qualcuno non lo ammette.',
-			"Perché la sicurezza del volo dipende molto dal rapporto esistente tra esperienza del pilota e prestazioni dell'ala, che deve necessarily essere equilibrato.",
+			"Perché la sicurezza del volo dipende molto dal rapporto esistente tra esperienza del pilota e prestazioni dell'ala, che deve necessariamente essere equilibrato.",
 			'Perché comunque non riuscirebbe a sfruttarne le prestazioni, pur volando in sicurezza.'
 		],
 		correct_answer_index: 1
@@ -4761,7 +4761,7 @@ const questions: Questions = [
 	{
 		id: '9022',
 		section: 'SICUREZZA DEL VOLO',
-		text: 'Per quale motivo il pilotaggio in prossimità del suolo deve necessarily essere più dolce e attento?',
+		text: 'Per quale motivo il pilotaggio in prossimità del suolo deve necessariamente essere più dolce e attento?',
 		answers: [
 			'Perché il recupero da configurazioni inusuali in cui ci si venga a trovare intenzionalmente o meno, comporta una perdita di quota che può essere fatale.',
 			"Perché vicino al suolo le reazioni dell'ala ai comandi sono più brusche a causa della maggior densità dell'aria.",

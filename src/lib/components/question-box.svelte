@@ -82,7 +82,7 @@
 					<span>{currentQuestion.id}</span>
 				</div>
 
-				<h2 class="mb-4 text-xl leading-tight font-semibold">
+				<h2 class="mb-4 text-3xl leading-tight font-semibold">
 					{currentQuestion.text}
 				</h2>
 			</div>
@@ -106,7 +106,7 @@
 
 				<div class="mt-4 h-8">
 					{#if isAnswered && !isCorrect}
-						<p class="animate-pulse text-center text-sm text-muted-foreground">
+						<p class="animate-pulse text-center text-xl text-muted-foreground">
 							Risposta sbagliata. Clicca un'altra volta per continuare.
 						</p>
 					{/if}

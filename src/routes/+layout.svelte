@@ -18,6 +18,6 @@
 
 <ModeWatcher defaultMode="dark" />
 
-<div class="mx-auto flex h-screen max-w-7xl flex-col p-2 sm:px-6 lg:px-8">
+<div class="mx-auto flex h-svh max-w-7xl flex-col p-2 sm:px-6 lg:px-8">
 	{@render children()}
 </div>

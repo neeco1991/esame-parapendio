@@ -107,7 +107,7 @@
 				<div class="mt-4 h-8">
 					{#if isAnswered && !isCorrect}
 						<p class="animate-pulse text-center text-xl text-muted-foreground">
-							Risposta sbagliata. Clicca un'altra volta per continuare.
+							Risposta sbagliata
 						</p>
 					{/if}
 				</div>

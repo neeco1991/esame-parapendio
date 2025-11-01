@@ -4129,204 +4129,204 @@ const questions: Questions = [
 		],
 		correct_answer_index: 1
 	},
-	{
-		id: '7062',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Decollo in deltaplano. Tra i controlli di sicurezza pre-decollo, uno in particolare risulta essenziale e deve essere eseguito con una tecnica ed una cura particolare perché ha causato svariati e gravi incidenti:',
-		answers: [
-			'il controllo del posizionamento del deltaplano.',
-			"il controllo dell'avvenuto aggancio del pilota al deltaplano.",
-			'il controllo del corretto ripiegamento del paracadute di emergenza.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7063',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Come è necessario verificare nel miglior modo l'avvenuto corretto aggancio del pilota al deltaplano?",
-		answers: [
-			"Facendo sorreggere la chiglia del deltaplano da un assistente, disponendosi in posizione orizzontale di volo sospesi all'aggancio, verificando oltre all'aggancio stesso la posizione del corpo rispetto alla barra.",
-			"Agganciando il moschettone e verificando attentamente con un controllo visivo che l'aggancio stesso sia correttamente avvenuto.",
-			"Facendo verificare dall'assistente che l'aggancio sia stato correttamente effettuato."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7064',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento sostenuto?',
-		answers: [
-			"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
-			"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
-			'Provvedere a che gli assistenti spingano adeguatamente la chiglia in fase di decollo.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7065',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Se il vento è angolato entro i 45° rispetto alla direzione decollo, è possibile decollare in deltaplano e come?',
-		answers: [
-			'No, anche se la componente è moderata.',
-			'Si, se la componente è limitata, correndo lungo la linea di massima pendenza con la prua parzialmente orientata contro vento.',
-			'Si, anche se la componente è sostenuta, purché si corra contro vento.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7066',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Se il pilota intraprende la corsa di decollo con il deltaplano molto cabrato:',
-		answers: [
-			'il decollo avviene prima ed è possibile sorvolare con più margine eventuali ostacoli sulla traiettoria.',
-			'il decollo avviene a velocità più bassa ed è più semplice il controllo del deltaplano dopo il decollo.',
-			'il decollo avviene con incidenza troppo elevata, la traiettoria che ne risulta è ripida ed è alto il rischio di stallo.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7067',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "È possibile l'interruzione di decollo in deltaplano e quali rischi comporta eventualmente?",
-		answers: [
-			'Si, solo in caso di estrema necessità, con alta probabilità di danni alla struttura e conseguenze per il pilota.',
-			'Si, ogniqualvolta lo si ritenga necessario senza particolari problematiche se si conosce e si applica la tecnica corretta.',
-			'Si, purché non la si effettui quando si è prossimi allo stacco e si abbia una discreta esperienza.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7068',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Quando è opportuno che il pilota si sistemi nell'imbrago dopo il decollo in deltaplano?",
-		answers: [
-			'Il più presto possibile dopo lo stacco.',
-			'Acquisito il completo controllo della velocità e della direzione, lontano dal pendio.',
-			"Non esistono limitazioni o tecniche particolari per sistemarsi nell'imbrago."
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7069',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Come si può variare l'angolo d'incidenza in volo con il deltaplano?",
-		answers: [
-			'Solo agendo sul dispositivo chiamato "overdrive".',
-			'Appoggiando il peso del pilota sulla barra, indi spingendola o trazionandola.',
-			'Agendo sulla barra di controllo con movimenti di spinta o trazione.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7070',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Individuare la corretta sequenza per effettuare una virata in deltaplano:',
-		answers: [
-			'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, spinta sulla barra per coordinare la virata, riposizionamento del corpo in posizione centrata rispetto alla barra.',
-			'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, riposizionamento del corpo in posizione centrata rispetto alla barra.',
-			"presa di velocità, spinta asimmetrica per ottenere una rotazione del deltaplano attorno all'asse verticale, contemporaneo spostamento laterale del corpo rispetto alla barra, riposizionamento del corpo in posizione centrata rispetto alla barra."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7071',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Quale errore di manovra causa generalmente una scivolata d'ala del deltaplano?",
-		answers: [
-			"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
-			"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
-			'Eccessiva spinta sulla barra durante una virata.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7072',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Come si esegue il controllo di rollio in deltaplano?',
-		answers: [
-			"Facendo semplicemente ruotare l'asse del corpo rispetto alla barra.",
-			'Spostando lateralmente il corpo e facendo nello stesso tempo ruotare il suo asse rispetto alla barra.',
-			'Spostando lateralmente il corpo rispetto alla barra, sempre mantenendolo parallelo alla chiglia.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7073',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Un ala rigida vira:',
-		answers: [
-			"grazie all'azione di comandi aerodinamici oltre ché allo spostamento del peso.",
-			"grazie all'azione dei comandi aerodinamici.",
-			'grazie allo spostamento del peso.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7074',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'A distanza di sicurezza dal terreno, come si esegue correttamente una prova di stallo in deltaplano?',
-		answers: [
-			"Si spinge dolcemente e gradualmente sulla barra per aumentare l'angolo di incidenza sino allo stallo ed a stallo avvenuto si ottiene la rimessa riaumentando la velocità al mezzo.",
-			"Si spinge in avanti sui montanti per ottenere angoli d'incidenza più elevati, e si mantiene questa posizione per almeno 30 secondi.",
-			"Dopo adeguata presa di velocità si spinge sulla barra con decisione e rapidità per ottenere un brusco aumento dell'incidenza."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7075',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Come deve comportarsi il pilota di deltaplano una volta entrato in termica se vuole sfruttarla?',
-		answers: [
-			'Mantenere il regime di minimo tasso di caduta ed effettuare delle virate di 360° per rimanere in termica.',
-			'Mantenere il regime di massima efficienza ed effettuare delle virate di 360° per rimanere in termica.',
-			'Mantenere sempre la minima velocità possibile ed effettuare delle virate accentuate di 360° per rimanere in termica.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7076',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Cosa è il tumbling?',
-		answers: [
-			'È un manovra acrobatica.',
-			'È una manovra di discesa rapida.',
-			'È un rovesciamento in avanti del delta che si ha a seguito di fortissime turbolenze quali quelle dovute ai rotori.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7077',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Come è possibile intervenire per aumentare la velocità di trim del deltaplano?',
-		answers: [
-			'Spostando indietro il punto di aggancio del pilota rispetto alla struttura.',
-			'Spostando in avanti il punto di aggancio del pilota rispetto alla struttura.',
-			'Spostando in alto il punto di aggancio del pilota rispetto alla struttura.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7078',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "La corretta sequenza in finale per l'atterraggio con il deltaplano in condizioni di vento moderato è:",
-		answers: [
-			'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino al momento di "aprire" per stallare il deltaplano alla minima velocità di sostentamento possibile.',
-			'raccordare adeguatamente a 4 o 5 metri dal suolo, mantenendo poi una traiettoria lievemente picchiata sino al momento di "aprire" per stallare il deltaplano ad una velocità ancora ben superiore alla minima di sostentamento.',
-			'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino in prossimità del punto di contatto prestabilito quindi "aprire" con decisione per stallare il deltaplano, indipendentemente dalla velocità raggiunta.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7079',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
-		answers: [
-			"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
-			'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
-			"Più tardi possibile durante l'apertura per stallare il deltaplano."
-		],
-		correct_answer_index: 1
-	},
+	// {
+	// 	id: '7062',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Decollo in deltaplano. Tra i controlli di sicurezza pre-decollo, uno in particolare risulta essenziale e deve essere eseguito con una tecnica ed una cura particolare perché ha causato svariati e gravi incidenti:',
+	// 	answers: [
+	// 		'il controllo del posizionamento del deltaplano.',
+	// 		"il controllo dell'avvenuto aggancio del pilota al deltaplano.",
+	// 		'il controllo del corretto ripiegamento del paracadute di emergenza.'
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7063',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "Come è necessario verificare nel miglior modo l'avvenuto corretto aggancio del pilota al deltaplano?",
+	// 	answers: [
+	// 		"Facendo sorreggere la chiglia del deltaplano da un assistente, disponendosi in posizione orizzontale di volo sospesi all'aggancio, verificando oltre all'aggancio stesso la posizione del corpo rispetto alla barra.",
+	// 		"Agganciando il moschettone e verificando attentamente con un controllo visivo che l'aggancio stesso sia correttamente avvenuto.",
+	// 		"Facendo verificare dall'assistente che l'aggancio sia stato correttamente effettuato."
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7064',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento sostenuto?',
+	// 	answers: [
+	// 		"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
+	// 		"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
+	// 		'Provvedere a che gli assistenti spingano adeguatamente la chiglia in fase di decollo.'
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7065',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Se il vento è angolato entro i 45° rispetto alla direzione decollo, è possibile decollare in deltaplano e come?',
+	// 	answers: [
+	// 		'No, anche se la componente è moderata.',
+	// 		'Si, se la componente è limitata, correndo lungo la linea di massima pendenza con la prua parzialmente orientata contro vento.',
+	// 		'Si, anche se la componente è sostenuta, purché si corra contro vento.'
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7066',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Se il pilota intraprende la corsa di decollo con il deltaplano molto cabrato:',
+	// 	answers: [
+	// 		'il decollo avviene prima ed è possibile sorvolare con più margine eventuali ostacoli sulla traiettoria.',
+	// 		'il decollo avviene a velocità più bassa ed è più semplice il controllo del deltaplano dopo il decollo.',
+	// 		'il decollo avviene con incidenza troppo elevata, la traiettoria che ne risulta è ripida ed è alto il rischio di stallo.'
+	// 	],
+	// 	correct_answer_index: 2
+	// },
+	// {
+	// 	id: '7067',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "È possibile l'interruzione di decollo in deltaplano e quali rischi comporta eventualmente?",
+	// 	answers: [
+	// 		'Si, solo in caso di estrema necessità, con alta probabilità di danni alla struttura e conseguenze per il pilota.',
+	// 		'Si, ogniqualvolta lo si ritenga necessario senza particolari problematiche se si conosce e si applica la tecnica corretta.',
+	// 		'Si, purché non la si effettui quando si è prossimi allo stacco e si abbia una discreta esperienza.'
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7068',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "Quando è opportuno che il pilota si sistemi nell'imbrago dopo il decollo in deltaplano?",
+	// 	answers: [
+	// 		'Il più presto possibile dopo lo stacco.',
+	// 		'Acquisito il completo controllo della velocità e della direzione, lontano dal pendio.',
+	// 		"Non esistono limitazioni o tecniche particolari per sistemarsi nell'imbrago."
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7069',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "Come si può variare l'angolo d'incidenza in volo con il deltaplano?",
+	// 	answers: [
+	// 		'Solo agendo sul dispositivo chiamato "overdrive".',
+	// 		'Appoggiando il peso del pilota sulla barra, indi spingendola o trazionandola.',
+	// 		'Agendo sulla barra di controllo con movimenti di spinta o trazione.'
+	// 	],
+	// 	correct_answer_index: 2
+	// },
+	// {
+	// 	id: '7070',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Individuare la corretta sequenza per effettuare una virata in deltaplano:',
+	// 	answers: [
+	// 		'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, spinta sulla barra per coordinare la virata, riposizionamento del corpo in posizione centrata rispetto alla barra.',
+	// 		'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, riposizionamento del corpo in posizione centrata rispetto alla barra.',
+	// 		"presa di velocità, spinta asimmetrica per ottenere una rotazione del deltaplano attorno all'asse verticale, contemporaneo spostamento laterale del corpo rispetto alla barra, riposizionamento del corpo in posizione centrata rispetto alla barra."
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7071',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "Quale errore di manovra causa generalmente una scivolata d'ala del deltaplano?",
+	// 	answers: [
+	// 		"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
+	// 		"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
+	// 		'Eccessiva spinta sulla barra durante una virata.'
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7072',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Come si esegue il controllo di rollio in deltaplano?',
+	// 	answers: [
+	// 		"Facendo semplicemente ruotare l'asse del corpo rispetto alla barra.",
+	// 		'Spostando lateralmente il corpo e facendo nello stesso tempo ruotare il suo asse rispetto alla barra.',
+	// 		'Spostando lateralmente il corpo rispetto alla barra, sempre mantenendolo parallelo alla chiglia.'
+	// 	],
+	// 	correct_answer_index: 2
+	// },
+	// {
+	// 	id: '7073',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Un ala rigida vira:',
+	// 	answers: [
+	// 		"grazie all'azione di comandi aerodinamici oltre ché allo spostamento del peso.",
+	// 		"grazie all'azione dei comandi aerodinamici.",
+	// 		'grazie allo spostamento del peso.'
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7074',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'A distanza di sicurezza dal terreno, come si esegue correttamente una prova di stallo in deltaplano?',
+	// 	answers: [
+	// 		"Si spinge dolcemente e gradualmente sulla barra per aumentare l'angolo di incidenza sino allo stallo ed a stallo avvenuto si ottiene la rimessa riaumentando la velocità al mezzo.",
+	// 		"Si spinge in avanti sui montanti per ottenere angoli d'incidenza più elevati, e si mantiene questa posizione per almeno 30 secondi.",
+	// 		"Dopo adeguata presa di velocità si spinge sulla barra con decisione e rapidità per ottenere un brusco aumento dell'incidenza."
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7075',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Come deve comportarsi il pilota di deltaplano una volta entrato in termica se vuole sfruttarla?',
+	// 	answers: [
+	// 		'Mantenere il regime di minimo tasso di caduta ed effettuare delle virate di 360° per rimanere in termica.',
+	// 		'Mantenere il regime di massima efficienza ed effettuare delle virate di 360° per rimanere in termica.',
+	// 		'Mantenere sempre la minima velocità possibile ed effettuare delle virate accentuate di 360° per rimanere in termica.'
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7076',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Cosa è il tumbling?',
+	// 	answers: [
+	// 		'È un manovra acrobatica.',
+	// 		'È una manovra di discesa rapida.',
+	// 		'È un rovesciamento in avanti del delta che si ha a seguito di fortissime turbolenze quali quelle dovute ai rotori.'
+	// 	],
+	// 	correct_answer_index: 2
+	// },
+	// {
+	// 	id: '7077',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'Come è possibile intervenire per aumentare la velocità di trim del deltaplano?',
+	// 	answers: [
+	// 		'Spostando indietro il punto di aggancio del pilota rispetto alla struttura.',
+	// 		'Spostando in avanti il punto di aggancio del pilota rispetto alla struttura.',
+	// 		'Spostando in alto il punto di aggancio del pilota rispetto alla struttura.'
+	// 	],
+	// 	correct_answer_index: 1
+	// },
+	// {
+	// 	id: '7078',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: "La corretta sequenza in finale per l'atterraggio con il deltaplano in condizioni di vento moderato è:",
+	// 	answers: [
+	// 		'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino al momento di "aprire" per stallare il deltaplano alla minima velocità di sostentamento possibile.',
+	// 		'raccordare adeguatamente a 4 o 5 metri dal suolo, mantenendo poi una traiettoria lievemente picchiata sino al momento di "aprire" per stallare il deltaplano ad una velocità ancora ben superiore alla minima di sostentamento.',
+	// 		'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino in prossimità del punto di contatto prestabilito quindi "aprire" con decisione per stallare il deltaplano, indipendentemente dalla velocità raggiunta.'
+	// 	],
+	// 	correct_answer_index: 0
+	// },
+	// {
+	// 	id: '7079',
+	// 	section: 'TECNICA DI PILOTAGGIO',
+	// 	text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
+	// 	answers: [
+	// 		"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
+	// 		'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
+	// 		"Più tardi possibile durante l'apertura per stallare il deltaplano."
+	// 	],
+	// 	correct_answer_index: 1
+	// },
 	{
 		id: '8001',
 		section: 'MATERIALI',

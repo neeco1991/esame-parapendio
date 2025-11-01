@@ -16,8 +16,6 @@ export function getRandomElement<T>(array: T[]): T {
 	if (!array || array.length === 0) {
 		throw new Error('array with length 0');
 	}
-
 	const randomIndex = Math.floor(Math.random() * array.length);
-
 	return array[randomIndex];
 }

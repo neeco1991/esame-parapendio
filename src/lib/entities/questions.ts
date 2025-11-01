@@ -4923,17 +4923,17 @@ const questions: Questions = [
 		],
 		correct_answer_index: 1
 	},
-	{
-		id: '9037',
-		section: 'SICUREZZA DEL VOLO',
-		text: "Decollo in deltaplano con vento sostenuto. L'utilizzo di un assistente che tocchi il delta all'inizio della rincorsa è rischioso perché:",
-		answers: [
-			"l'assistente può essere trascinato giù dalla rampa o addirittura essere portato in volo.",
-			'non tutti gli assistenti danno adeguate garanzie di comportamento anche se ben istruiti dal pilota.',
-			"l'assistente, anche se esperto non può avere la sensibilità rispetto al mezzo che invece ha il pilota e quindi può imprimergli un assetto e una posizione non ottimali."
-		],
-		correct_answer_index: 2
-	},
+	// {
+	// 	id: '9037',
+	// 	section: 'SICUREZZA DEL VOLO',
+	// 	text: "Decollo in deltaplano con vento sostenuto. L'utilizzo di un assistente che tocchi il delta all'inizio della rincorsa è rischioso perché:",
+	// 	answers: [
+	// 		"l'assistente può essere trascinato giù dalla rampa o addirittura essere portato in volo.",
+	// 		'non tutti gli assistenti danno adeguate garanzie di comportamento anche se ben istruiti dal pilota.',
+	// 		"l'assistente, anche se esperto non può avere la sensibilità rispetto al mezzo che invece ha il pilota e quindi può imprimergli un assetto e una posizione non ottimali."
+	// 	],
+	// 	correct_answer_index: 2
+	// },
 	// {
 	// 	id: '9038',
 	// 	section: 'SICUREZZA DEL VOLO',

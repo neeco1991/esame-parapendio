@@ -1,22 +1,45 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import Home from '$lib/components/home.svelte';
-	import QuestionBox from '$lib/components/question-box.svelte';
-	import ThemeButton from '$lib/components/theme/theme-button.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { onMount } from 'svelte';
+
+	let unlocked = getUnlocked();
+	let guess = '';
+
+	const HARDCODED_PASSWORD = 'asdfivlpwd'; //
+
+	function checkPassword() {
+		if (guess === HARDCODED_PASSWORD) {
+			localStorage.setItem('unlocked', 'true');
+			unlocked = true;
+		} else {
+			alert('Wrong password!');
+			guess = '';
+		}
+	}
+
+	function getUnlocked() {
+		if (!browser) {
+			return false;
+		}
+
+		return localStorage.getItem('unlocked') === 'true';
+	}
+
+	onMount(() => {
+		console.log(unlocked);
+	});
 </script>
 
-<svelte:head>
-	<title>Homepage | Esame Parapendio</title>
-	<meta
-		name="description"
-		content="L'app per la preparazione all'esame di parapendio e/o deltaplano"
-	/>
-</svelte:head>
-
-<!-- <div class="flex w-full justify-end">
-	<ThemeButton />
-</div>
-<div class="mt-2 h-full">
-	<QuestionBox />
-</div> -->
-
-<Home />
+{#if unlocked}
+	<Home />
+{:else}
+	<main class="gate">
+		<h2>Inserisci password</h2>
+		<form on:submit|preventDefault={checkPassword}>
+			<input type="password" bind:value={guess} placeholder="Password" />
+			<Button type="submit">Entra</Button>
+		</form>
+	</main>
+{/if}

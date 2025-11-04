@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Button from './ui/button/button.svelte';
 	import InstallButton from './install-button.svelte';
+	import Logo from './logo.svelte';
 </script>
 
 <div class="flex h-full flex-col justify-between">
 	<div class="mt-4 flex w-full justify-center">
-		<img src="/src/lib/assets/logo.svg" alt="Logo" width="100" height="50" />
+		<Logo className="w-24 h-24" />
 	</div>
 
 	<div class="flex flex-col space-y-4">

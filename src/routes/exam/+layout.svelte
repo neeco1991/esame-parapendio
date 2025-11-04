@@ -16,7 +16,9 @@
 	</Button>
 
 	<div class="pointer-events-none absolute m-auto w-full text-center">
-		{(exam.questionIndex + 1).toString()} / 30
+		{#if !exam.isEnded}
+			{(exam.questionIndex + 1).toString()} / 30
+		{/if}
 	</div>
 
 	<Timer

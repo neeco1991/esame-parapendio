@@ -1,10 +1,12 @@
-import { getRandomElement } from '$lib/utils';
+import { getStoredAnswers, saveStoredAnswers } from '$lib/services/questionService';
+import { getSettings } from '$lib/services/settingsService';
+import type { Section } from './sections';
 
-const MISSED_ANSWER_PROBABILITY = 0.2;
+export const MISSED_ANSWER_PROBABILITY = 0.2;
 
 export interface Question {
 	id: string;
-	section: string;
+	section: Section;
 	text: string;
 	answers: [string, string, string];
 	correct_answer_index: 0 | 1 | 2;
@@ -12,33 +14,11 @@ export interface Question {
 
 type Questions = Question[];
 
-type ErrorMap = Record<string, string>;
-
-const getStoredAnswers = (): ErrorMap => {
-	const rawStore = localStorage.getItem('answers');
-	return rawStore ? JSON.parse(rawStore) : {};
-};
-
-const saveStoredAnswers = (store: ErrorMap) => {
-	localStorage.setItem('answers', JSON.stringify(store));
-};
-
-const getMissedQuestions = (): Questions => {
+export const getMissedQuestions = (): Questions => {
 	const store = getStoredAnswers();
-	return questions.filter((question) => {
+	return getQuestions().filter((question) => {
 		return question.id in store;
 	});
-};
-
-export const pickQuestion = (): Question => {
-	if (Math.random() < MISSED_ANSWER_PROBABILITY) {
-		const missedQuestions = getMissedQuestions();
-		if (missedQuestions.length > 0) {
-			return getRandomElement(missedQuestions);
-		}
-	}
-
-	return getRandomElement(questions);
 };
 
 export const submitAnswer = (question: Question, answer: 0 | 1 | 2): boolean => {
@@ -63,7 +43,20 @@ export const submitAnswer = (question: Question, answer: 0 | 1 | 2): boolean => 
 	return false;
 };
 
-const questions: Questions = [
+export const getQuestions = () => {
+	const settings = getSettings();
+	let questions: Questions = commonQuestions;
+	if (settings.paragliding === 'true') {
+		questions = [...questions, ...paraglidingQuestions];
+	}
+	if (settings.delta === 'true') {
+		questions = [...questions, ...deltaQuestions];
+	}
+
+	return questions;
+};
+
+const commonQuestions: Questions = [
 	{
 		id: '1001',
 		section: 'NORMATIVA E LEGISLAZIONE',
@@ -1436,17 +1429,7 @@ const questions: Questions = [
 		answers: ['6 kg/m².', '9 kg/m²', '4 kg/m²'],
 		correct_answer_index: 2
 	},
-	{
-		id: '2097',
-		section: 'AERODINAMICA',
-		text: 'Se a seguito di una parziale "chiusura" del parapendio la sua superficie alare si riduce:',
-		answers: [
-			'il carico alare rimane lo stesso.',
-			'il carico alare aumenta.',
-			'il carico alare si riduce.'
-		],
-		correct_answer_index: 1
-	},
+
 	{
 		id: '2098',
 		section: 'AERODINAMICA',
@@ -3611,7 +3594,7 @@ const questions: Questions = [
 		section: 'TECNICA DI PILOTAGGIO',
 		text: 'Quale inclinazione del pendio, assicurata la possibilità di una graduale e corretta rincorsa, è da considerarsi ottimale e sicura per il decollo?',
 		answers: [
-			'Oltre 120° e sino a 35°, risultando già così nettamente superiore alla pendenza della traiettoria di volo realizzabile.',
+			'Oltre i 20° e sino a 35°, risultando già così nettamente superiore alla pendenza della traiettoria di volo realizzabile.',
 			'Dai 35° ai 45°, in quanto solo così risulta nettamente superiore alla pendenza della traiettoria di volo realizzabile.',
 			'Oltre i 45°, per ottenere un rapido distacco dal terreno con garanzia di sorvolo degli ostacoli sulla traiettoria.'
 		],
@@ -3748,17 +3731,7 @@ const questions: Questions = [
 		answers: ['90 km/h.', '30 km/h.', '40 km/h.'],
 		correct_answer_index: 1
 	},
-	{
-		id: '7017',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "A quale scopo si utilizza l'acceleratore in parapendio?",
-		answers: [
-			"Per aumentare l'efficienza suolo in condizioni di vento contrario.",
-			'Per aumentare il tasso di caduta e ridurre la velocità orizzontale.',
-			"Per aumentare l'angolo di assetto in condizioni di turbolenza."
-		],
-		correct_answer_index: 0
-	},
+
 	{
 		id: '7018',
 		section: 'TECNICA DI PILOTAGGIO',
@@ -3957,17 +3930,7 @@ const questions: Questions = [
 		],
 		correct_answer_index: 0
 	},
-	{
-		id: '7036',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Quando è necessario controllare che i cordini del parapendio non siano attorcigliati o aggrovigliati?',
-		answers: [
-			"Dopo aver gonfiato, sollevato e frenato quanto basta l'ala in fase di decollo.",
-			'Subito dopo essere atterrati prima di riporre il parapendio.',
-			"Durante la preparazione dell'ala per il decollo."
-		],
-		correct_answer_index: 2
-	},
+
 	{
 		id: '7037',
 		section: 'TECNICA DI PILOTAGGIO',
@@ -3979,449 +3942,7 @@ const questions: Questions = [
 		],
 		correct_answer_index: 0
 	},
-	{
-		id: '7038',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Immediatamente prima di effettuare un decollo in parapendio è necessario eseguire i controlli di sicurezza che sono:',
-		answers: [
-			'scarpe allacciate, selletta allacciata e regolata come previsto, bretelle e cordini correttamente predisposti ed impugnati, ala in posizione corretta, casco allacciato, vento e condizioni meteo favorevoli, spazio aereo libero.',
-			"casco e guanti indossati, terreno sgombro ed adatto, cassoni dell'ala aperti, vento favorevole e spazio aereo libero.",
-			"moschettoni o maillons serrati, integrità dell'ala verificata, selletta correttamente collegata all'ala, freni liberi."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7039',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Nel parapendio oltre a curare che la posizione del pilota risulti in volo quella corretta, è indispensabile, affinché l'ala mantenga le caratteristiche garantite dall'omologazione, verificare che il tipo di selletta usato sia compatibile e che vengano rispettate le seguenti disposizioni:",
-		answers: [
-			'regolare la selletta per ottenere che la distanza tra le bretelle (destra e sinistra) sia sempre superiore a 40 cm.',
-			'regolare la selletta in modo che il pilota possa comunque arrivare ad afferrare i cordini anteriori esterni ben sopra i maillons.',
-			'regolare la selletta in modo che la distanza tra le bretelle (destra e sinistra) nonché tra i maillons ed il piano della selletta sia quella prevista e riportata sulla targhetta di omologazione.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7040',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Se ci rendiamo conto che il nostro parapendio è umido, quali accorgimenti dobbiamo adottare durante il volo:',
-		answers: [
-			'effettuare le "orecchie" per scendere più velocemente.',
-			'non ci sono particolari accorgimenti da adottare, perché la vela umida non presenta alcun problema di assetto.',
-			"pilotare l'ala con dolcezza rimanendo nella fascia alta delle velocità."
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7051',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Il parapendio è un mezzo che presenta il vantaggio di poter girare abbastanza stretto da non uscire da una eventuale termica anche se di modeste dimensioni. Quali delle seguenti opzioni è preferibile per sfruttare meglio questo tipo di condizioni?',
-		answers: [
-			'Scegliere un ottimo compromesso tra inclinazione laterale e tasso di caduta che consenta comunque di non uscire dalla termica, tenendo conto del suo andamento verticale.',
-			'Eseguire comunque virate più piatte possibile per ottenere il minimo tasso di caduta.',
-			'Effettuare degli "otto" in modo tale da rimanere entro i limiti della termica stessa.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7052',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "E' possibile provare l'avvicinamento allo stallo in parapendio e con quale tecnica per garantirsi adeguati margini di sicurezza?",
-		answers: [
-			'Si, effettuandolo solo in quota indipendentemente dal modo in cui si interviene sui comandi.',
-			'No, tutto ciò che ha a che vedere con lo stallo comunque non può essere effettuato mantenendo adeguati margini di sicurezza in quanto induce sicuramente configurazioni inusuali.',
-			"Si, durante un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7053',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Come si riconosce uno stallo paracadutale del parapendio?',
-		answers: [
-			"Ala perfettamente gonfia, velocità all'aria praticamente nulla, tasso di caduta elevato.",
-			"Ala perfettamente gonfia, velocità all'aria praticamente nulla, tasso di caduta normale, forti vibrazioni sui comandi.",
-			"Ala con chiusura laterale, velocità all'aria praticamente nulla, tendenza dell'ala all'autorotazione."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7054',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'In volo con il parapendio può accadere che accidentalmente si raggiunga lo stallo volando troppo lenti. Per una corretta rimessa, il pilota dovrà:',
-		answers: [
-			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bruscamente durante l'abbattimento in avanti dell'ala.",
-			"a stallo avvenuto mantenere i comandi affondati, attendere guardando verso l'alto il ritorno dell'ala sulla verticale, quindi rilasciare gradualmente e simmetricamente i comandi pronto ad intervenire per gestire il pendolamento in avanti.",
-			'a stallo avvenuto rilasciare dolcemente i comandi, iniziando se possibile una virata per acquisire velocità.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7055',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Quali sono le manovre di discesa rapida in parapendio?',
-		answers: [
-			'Effettuare virate continue che consentono di aumentare il carico alare.',
-			"Fare volare l'ala in condizioni di stallo.",
-			'Le "orecchie", i "wing over" e la spirale picchiata.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7056',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Qual è il risultato di una simmetrica e leggera tensione esercitata sugli elevatori posteriori del parapendio?',
-		answers: [
-			'Aumento della velocità e diminuzione della portanza.',
-			"Variazione dell'assetto, dell'incidenza, della velocità.",
-			'Diminuzione della sola incidenza.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7057',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'È possibile in parapendio pilotare facendo uso dei soli elevatori posteriori?',
-		answers: ['Si.', 'Si, ma non è possibile variare la velocità sulla traiettoria.', 'No.'],
-		correct_answer_index: 0
-	},
-	{
-		id: '7058',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "Il pilota che agisce sull'acceleratore sa di poter:",
-		answers: [
-			"variare l'assetto, l'incidenza e la velocità dell'ala entro limiti ben precisi.",
-			"variare quanto vuole la velocità dell'ala agendo su assetto ed incidenza.",
-			'variare consistentemente la pendenza della traiettoria in quanto riesce a produrre ampie variazioni di incidenza.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '7059',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'In volo rettilineo in uscita da una virata, se per effetto di una sovracorrezione si innescano oscillazioni laterali del parapendio il pilota dovrà:',
-		answers: [
-			'cercare di smorzarle insistendo ad agire sui comandi in contro fase.',
-			'rilasciare completamente i comandi per qualche secondo e poi iniziare una virata accentuata a destra o sinistra.',
-			"rallentare trazionando con una certa decisione ed in modo simmetrico i comandi sino ad ottenere la stabilizzazione dell'ala."
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '7060',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: "La corretta sequenza in finale per l'atterraggio in parapendio, in condizioni di vento moderato, è:",
-		answers: [
-			"massima velocità all'aria sino a circa un metro dal suolo quindi intervento deciso sui comandi per provocare lo stallo.",
-			"massima velocità all'aria possibile sino a circa 4 o 5 metri dal suolo, primo intervento sui comandi per diminuire velocità e pendenza (freni trazionati circa al 20%), graduale ma completa frenata in prossimità del suolo sino al contatto.",
-			'regime di minimo tasso di caduta sino a circa due metri dal suolo quindi graduale intervento sui comandi sino a provocare lo stallo.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '7061',
-		section: 'TECNICA DI PILOTAGGIO',
-		text: 'Nella zona di decollo abbiamo vento sufficiente a consentire un gonfiaggio fronte vela ma il vento è laterale (25 gradi) rispetto alla massima pendenza del terreno.',
-		answers: [
-			'Predisponiamo la vela per il gonfiaggio lungo la massima pendenza per sfruttarla al meglio.',
-			'Orientiamo la vela contro vento per gonfiarla e successivamente eseguiamo la corsa di decollo lungo la massima pendenza.',
-			'Orientiamo la vela contro vento per gonfiarla e successivamente decolliamo lungo questa direzione.'
-		],
-		correct_answer_index: 1
-	},
-	// {
-	// 	id: '7062',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Decollo in deltaplano. Tra i controlli di sicurezza pre-decollo, uno in particolare risulta essenziale e deve essere eseguito con una tecnica ed una cura particolare perché ha causato svariati e gravi incidenti:',
-	// 	answers: [
-	// 		'il controllo del posizionamento del deltaplano.',
-	// 		"il controllo dell'avvenuto aggancio del pilota al deltaplano.",
-	// 		'il controllo del corretto ripiegamento del paracadute di emergenza.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7063',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "Come è necessario verificare nel miglior modo l'avvenuto corretto aggancio del pilota al deltaplano?",
-	// 	answers: [
-	// 		"Facendo sorreggere la chiglia del deltaplano da un assistente, disponendosi in posizione orizzontale di volo sospesi all'aggancio, verificando oltre all'aggancio stesso la posizione del corpo rispetto alla barra.",
-	// 		"Agganciando il moschettone e verificando attentamente con un controllo visivo che l'aggancio stesso sia correttamente avvenuto.",
-	// 		"Facendo verificare dall'assistente che l'aggancio sia stato correttamente effettuato."
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7064',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento sostenuto?',
-	// 	answers: [
-	// 		"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
-	// 		"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
-	// 		'Provvedere a che gli assistenti spingano adeguatamente la chiglia in fase di decollo.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7065',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Se il vento è angolato entro i 45° rispetto alla direzione decollo, è possibile decollare in deltaplano e come?',
-	// 	answers: [
-	// 		'No, anche se la componente è moderata.',
-	// 		'Si, se la componente è limitata, correndo lungo la linea di massima pendenza con la prua parzialmente orientata contro vento.',
-	// 		'Si, anche se la componente è sostenuta, purché si corra contro vento.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7066',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Se il pilota intraprende la corsa di decollo con il deltaplano molto cabrato:',
-	// 	answers: [
-	// 		'il decollo avviene prima ed è possibile sorvolare con più margine eventuali ostacoli sulla traiettoria.',
-	// 		'il decollo avviene a velocità più bassa ed è più semplice il controllo del deltaplano dopo il decollo.',
-	// 		'il decollo avviene con incidenza troppo elevata, la traiettoria che ne risulta è ripida ed è alto il rischio di stallo.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '7067',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "È possibile l'interruzione di decollo in deltaplano e quali rischi comporta eventualmente?",
-	// 	answers: [
-	// 		'Si, solo in caso di estrema necessità, con alta probabilità di danni alla struttura e conseguenze per il pilota.',
-	// 		'Si, ogniqualvolta lo si ritenga necessario senza particolari problematiche se si conosce e si applica la tecnica corretta.',
-	// 		'Si, purché non la si effettui quando si è prossimi allo stacco e si abbia una discreta esperienza.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7068',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "Quando è opportuno che il pilota si sistemi nell'imbrago dopo il decollo in deltaplano?",
-	// 	answers: [
-	// 		'Il più presto possibile dopo lo stacco.',
-	// 		'Acquisito il completo controllo della velocità e della direzione, lontano dal pendio.',
-	// 		"Non esistono limitazioni o tecniche particolari per sistemarsi nell'imbrago."
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7069',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "Come si può variare l'angolo d'incidenza in volo con il deltaplano?",
-	// 	answers: [
-	// 		'Solo agendo sul dispositivo chiamato "overdrive".',
-	// 		'Appoggiando il peso del pilota sulla barra, indi spingendola o trazionandola.',
-	// 		'Agendo sulla barra di controllo con movimenti di spinta o trazione.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '7070',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Individuare la corretta sequenza per effettuare una virata in deltaplano:',
-	// 	answers: [
-	// 		'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, spinta sulla barra per coordinare la virata, riposizionamento del corpo in posizione centrata rispetto alla barra.',
-	// 		'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, riposizionamento del corpo in posizione centrata rispetto alla barra.',
-	// 		"presa di velocità, spinta asimmetrica per ottenere una rotazione del deltaplano attorno all'asse verticale, contemporaneo spostamento laterale del corpo rispetto alla barra, riposizionamento del corpo in posizione centrata rispetto alla barra."
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7071',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "Quale errore di manovra causa generalmente una scivolata d'ala del deltaplano?",
-	// 	answers: [
-	// 		"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
-	// 		"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
-	// 		'Eccessiva spinta sulla barra durante una virata.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7072',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Come si esegue il controllo di rollio in deltaplano?',
-	// 	answers: [
-	// 		"Facendo semplicemente ruotare l'asse del corpo rispetto alla barra.",
-	// 		'Spostando lateralmente il corpo e facendo nello stesso tempo ruotare il suo asse rispetto alla barra.',
-	// 		'Spostando lateralmente il corpo rispetto alla barra, sempre mantenendolo parallelo alla chiglia.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '7073',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Un ala rigida vira:',
-	// 	answers: [
-	// 		"grazie all'azione di comandi aerodinamici oltre ché allo spostamento del peso.",
-	// 		"grazie all'azione dei comandi aerodinamici.",
-	// 		'grazie allo spostamento del peso.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7074',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'A distanza di sicurezza dal terreno, come si esegue correttamente una prova di stallo in deltaplano?',
-	// 	answers: [
-	// 		"Si spinge dolcemente e gradualmente sulla barra per aumentare l'angolo di incidenza sino allo stallo ed a stallo avvenuto si ottiene la rimessa riaumentando la velocità al mezzo.",
-	// 		"Si spinge in avanti sui montanti per ottenere angoli d'incidenza più elevati, e si mantiene questa posizione per almeno 30 secondi.",
-	// 		"Dopo adeguata presa di velocità si spinge sulla barra con decisione e rapidità per ottenere un brusco aumento dell'incidenza."
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7075',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Come deve comportarsi il pilota di deltaplano una volta entrato in termica se vuole sfruttarla?',
-	// 	answers: [
-	// 		'Mantenere il regime di minimo tasso di caduta ed effettuare delle virate di 360° per rimanere in termica.',
-	// 		'Mantenere il regime di massima efficienza ed effettuare delle virate di 360° per rimanere in termica.',
-	// 		'Mantenere sempre la minima velocità possibile ed effettuare delle virate accentuate di 360° per rimanere in termica.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7076',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Cosa è il tumbling?',
-	// 	answers: [
-	// 		'È un manovra acrobatica.',
-	// 		'È una manovra di discesa rapida.',
-	// 		'È un rovesciamento in avanti del delta che si ha a seguito di fortissime turbolenze quali quelle dovute ai rotori.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '7077',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'Come è possibile intervenire per aumentare la velocità di trim del deltaplano?',
-	// 	answers: [
-	// 		'Spostando indietro il punto di aggancio del pilota rispetto alla struttura.',
-	// 		'Spostando in avanti il punto di aggancio del pilota rispetto alla struttura.',
-	// 		'Spostando in alto il punto di aggancio del pilota rispetto alla struttura.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '7078',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: "La corretta sequenza in finale per l'atterraggio con il deltaplano in condizioni di vento moderato è:",
-	// 	answers: [
-	// 		'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino al momento di "aprire" per stallare il deltaplano alla minima velocità di sostentamento possibile.',
-	// 		'raccordare adeguatamente a 4 o 5 metri dal suolo, mantenendo poi una traiettoria lievemente picchiata sino al momento di "aprire" per stallare il deltaplano ad una velocità ancora ben superiore alla minima di sostentamento.',
-	// 		'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino in prossimità del punto di contatto prestabilito quindi "aprire" con decisione per stallare il deltaplano, indipendentemente dalla velocità raggiunta.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '7079',
-	// 	section: 'TECNICA DI PILOTAGGIO',
-	// 	text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
-	// 	answers: [
-	// 		"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
-	// 		'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
-	// 		"Più tardi possibile durante l'apertura per stallare il deltaplano."
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	{
-		id: '8001',
-		section: 'MATERIALI',
-		text: 'È più preoccupante un taglio sulla superficie del parapendio in corrispondenza:',
-		answers: [
-			"della parte anteriore centrale dell'estradosso.",
-			"della parte posteriore laterale dell'estradosso.",
-			"della parte posteriore laterale dell'intradosso."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '8002',
-		section: 'MATERIALI',
-		text: 'I cordini del parapendio devono essere di materiale:',
-		answers: [
-			'più elastico possibile.',
-			'più anelastico e resistente possibile.',
-			"più resistente possibile indipendentemente dall'elasticità."
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '8003',
-		section: 'MATERIALI',
-		text: 'Durante il volo in parapendio sono sottoposti al maggior carico i cordini:',
-		answers: ['anteriori.', 'posteriori.', 'laterali.'],
-		correct_answer_index: 0
-	},
-	{
-		id: '8004',
-		section: 'MATERIALI',
-		text: 'Il parapendio è generalmente fabbricato con materiale "rip-stop". Che cosa significa?',
-		answers: [
-			'Che il tessuto stesso non può strapparsi, ma solo tagliarsi.',
-			'Che un eventuale taglio o strappo nel tessuto ha molte probabilità di estendersi pericolosamente.',
-			'Che un eventuale taglio o strappo nel tessuto ha poche probabilità di estendersi pericolosamente.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '8005',
-		section: 'MATERIALI',
-		text: 'Il tessuto con cui è generalmente costruito un parapendio deve essere:',
-		answers: [
-			"resistente all'usura, molto elastico e gas permeabile.",
-			"resistente all'usura, anelastico e gas permeabile.",
-			"resistente all'usura, anelastico e non gas permeabile."
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '8006',
-		section: 'MATERIALI',
-		text: 'Quali agenti esterni danneggiano maggiormente il tessuto di un parapendio rendendolo fragile e gas-permeabile?',
-		answers: [
-			"I raggi ultravioletti e l'umidità.",
-			"I raggi infrarossi e l'umidità.",
-			'I raggi infrarossi ed il caldo secco.'
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '8007',
-		section: 'MATERIALI',
-		text: 'Se il tessuto di un parapendio è divenuto poroso:',
-		answers: [
-			'risulta compromesso solo il suo aspetto.',
-			'risultano un poco degradate solo le sue prestazioni.',
-			'risultano degradate le sue prestazioni e compromessa la sua affidabilità.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '8008',
-		section: 'MATERIALI',
-		text: 'Dovendo riporre un parapendio si avrà cura di farlo:',
-		answers: [
-			'solo se la vela è asciutta ed in luogo secco, lontano da fonti di calore ed al riparo dalla luce solare.',
-			'solo se la vela è asciutta, in ambiente moderatamente umido e caldo, al riparo dalla luce solare.',
-			"anche se è un poco umido, purché in luogo caldo, lasciando il sacco contenitore aperto onde consentire all'umidità di evaporare."
-		],
-		correct_answer_index: 0
-	},
-	{
-		id: '8009',
-		section: 'MATERIALI',
-		text: "Il cordino di un parapendio è rimasto impigliato ed il kevlar che ne costituisce l'anima è ora privo di rivestimento, ma integro:",
-		answers: [
-			'provvisoriamente lo accorciamo annodandolo per evitare che la parte scoperta sia soggetta a trazione.',
-			'provvisoriamente lo rivestiamo con nastro isolante onde evitare di esporre alla luce il tratto di kevlar scoperto.',
-			'provvisoriamente aggiungiamo con opportuni nodi un altro pezzo di cordino al tratto scoperto per creare un rinforzo.'
-		],
-		correct_answer_index: 1
-	},
+
 	{
 		id: '8010',
 		section: 'MATERIALI',
@@ -4433,68 +3954,7 @@ const questions: Questions = [
 		],
 		correct_answer_index: 0
 	},
-	// {
-	// 	id: '8011',
-	// 	section: 'MATERIALI',
-	// 	text: 'Che cosa è necessario verificare in corrispondenza di piombature di cavi e tiranti del deltaplano?',
-	// 	answers: [
-	// 		'Che i cavi ed i tiranti non siano rotti sotto la piombatura.',
-	// 		'Che le piombature siano semplicemente in buono stato.',
-	// 		'Che le piombature siano in buono stato ed i cavi o tiranti non presentino segni di logoramento in vicinanza delle piombature stesse.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '8012',
-	// 	section: 'MATERIALI',
-	// 	text: 'Se ci accorgiamo che qualche tirante del deltaplano è sfilacciato o logoro:',
-	// 	answers: [
-	// 		'lo sostituiamo immediatamente prima di riandare in volo.',
-	// 		'lo ripariamo alla meglio non potendolo sostituire immediatamente.',
-	// 		'andiamo in volo facendo attenzione a non sollecitare la struttura con particolari manovre.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '8013',
-	// 	section: 'MATERIALI',
-	// 	text: "Durante l'ultimo volo in deltaplano abbiamo effettuato un atterraggio pesante. Il cross bar ed un montante si sono piegati:",
-	// 	answers: [
-	// 		'riandiamo in volo avendo sostituito il montante e raddrizzato perfettamente il cross bar.',
-	// 		'riandiamo in volo solo dopo aver sostituito il montante ed il cross bar con ricambi originali.',
-	// 		'riandiamo in volo avendo raddrizzato perfettamente montante e cross bar.'
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '8014',
-	// 	section: 'MATERIALI',
-	// 	text: 'Il materiale di cui sono rivestite le superfici di un deltaplano si deteriora particolarmente se esposto a lungo a:',
-	// 	answers: ['raggi infrarossi.', 'raggi ultravioletti.', 'clima particolarmente secco.'],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '8015',
-	// 	section: 'MATERIALI',
-	// 	text: 'Se si deve riporre il deltaplano per un lungo periodo dovremo aver cura di:',
-	// 	answers: [
-	// 		'farlo in apposita sacca quando siamo certi che è perfettamente asciutto, sistemandolo in luogo meno umido possibile, lontano dalla luce del sole e da fonti di calore.',
-	// 		"sistemarlo in apposita sacca dopo aver effettuato l'ultimo volo, riporlo su appositi supporti fissati alle pareti di uno scantinato dove non può essere raggiunto dalla luce del sole.",
-	// 		'lasciarlo ripiegato senza sacca, sistemandolo possibilmente in uno scantinato o in garage dove non può essere raggiunto dalla luce del sole, possibilmente su appositi supporti fissati alle pareti.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '8016',
-	// 	section: 'MATERIALI',
-	// 	text: 'Se in corrispondenza di qualche elemento costituente il corredo di tiranteria o bulloneria del deltaplano si riscontra presenza di ruggine:',
-	// 	answers: [
-	// 		'è necessario prima di volare rimuoverla prontamente usando appositi prodotti antiruggine sul particolare interessato.',
-	// 		"è possibile comunque intraprendere il volo purché si sia accertata l'integrità del particolare interessato.",
-	// 		'è indispensabile sostituire il particolare in questione con altro idoneo di identiche caratteristiche, prima di intraprendere qualsiasi tipo di volo.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
+
 	{
 		id: '8017',
 		section: 'MATERIALI',
@@ -4769,28 +4229,7 @@ const questions: Questions = [
 		],
 		correct_answer_index: 0
 	},
-	{
-		id: '9023',
-		section: 'SICUREZZA DEL VOLO',
-		text: 'Quali conseguenze in volo si possono avere per non aver agganciato i cosciali della selletta del parapendio?',
-		answers: [
-			'Una posizione molto scomoda, ma il rischio è minimo se il pettorale è ben agganciato.',
-			'Una situazione di gravissimo pericolo quale la fuoriuscita dalla selletta e la caduta.',
-			'Una situazione di grave pericolo sempre che non ci si riesca ad aggrappare saldamente al fascio funicolare.'
-		],
-		correct_answer_index: 1
-	},
-	{
-		id: '9024',
-		section: 'SICUREZZA DEL VOLO',
-		text: "Se durante il decollo in parapendio si constata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
-		answers: [
-			'accelerare la corsa agendo sui comandi per ottenere il corretto gonfiaggio prima dello stacco.',
-			'agire sui freni e interrompere il decollo, tenendo presente che il parapendio offre il vantaggio di una possibile interruzione di decollo senza conseguenze.',
-			"proseguire nella manovra di decollo e dopo che esso è avvenuto ripristinare per prima cosa con l'uso dei comandi la configurazione normale dell'ala."
-		],
-		correct_answer_index: 1
-	},
+
 	{
 		id: '9025',
 		section: 'SICUREZZA DEL VOLO',
@@ -4812,6 +4251,344 @@ const questions: Questions = [
 			"Una situazione di grave pericolo che va dal ritorno violento al pendio all'impossibilità di recupero della cravatta con buone probabilità che l'ala sia difficilmente controllabile."
 		],
 		correct_answer_index: 2
+	},
+
+	{
+		id: '9043',
+		section: 'SICUREZZA DEL VOLO',
+		text: "E' vero che praticando il Volo Libero il pilota deve usare il paracadute di soccorso solo in ultima analisi e cioè quando non è possibile ripristinare altrimenti condizioni di volo nelle quali il mezzo risulti pilotabile sino a un atterraggio sicuro?",
+		answers: [
+			"No, questa è una credenza sbagliata perché il paracadute di soccorso va usato sempre e al più presto possibile quando l'ala assume una configurazione inusuale.",
+			"Si, tenendo presente che non c'è alcuna fretta nell'utilizzarlo perché non ha limiti per l'apertura.",
+			'Si, tenendo presente comunque che dal momento in cui si decide di usarlo è bene farlo al più presto per consentirgli di aprirsi in tempo utile ed entro i suoi limiti strutturali.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '9044',
+		section: 'SICUREZZA DEL VOLO',
+		text: "Oltre al caso di malore del pilota, in quale di queste situazioni è utile l'apertura del paracadute di emergenza e come deve essere fatta?",
+		answers: [
+			"In forte turbolenza qualora risulti difficile il controllo del deltaplano o del parapendio, tirando con decisione la maniglia verso l'alto.",
+			"In caso ci si trovi all'interno di una corrente ascensionale tanto forte da trascinarci in nube, tirando la maniglia con decisione verso il basso in modo che il paracadute si allontani più possibile dall'ala.",
+			"In caso di rottura strutturale non potendo più controllare l'apparecchio o a seguito di configurazione inusuale che si riveli totalmente irrecuperabile con l'uso dei comandi e del peso, tirando con decisione la maniglia in modo che il paracadute si allontani più possibile dall'ala."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '9045',
+		section: 'SICUREZZA DEL VOLO',
+		text: "Se è vero che il paracadute di soccorso, come emerge inconfutabilmente da dati statistici, funziona nella quasi totalità dei casi, per quale motivo è comunque raccomandato il suo uso solo in casi in cui esso costituisce l'ultima risorsa disponibile?",
+		answers: [
+			'Perché le statistiche non sono attendibili, e il suo funzionamento è aleatorio.',
+			"Perché pur garantendo un'altissima probabilità di funzionamento non è, nella quasi totalità dei casi, direzionabile e quindi non ci garantisce la scelta del punto di atterraggio.",
+			'Perché è quasi sempre inutile usarlo anche se funziona, qualsiasi sia la configurazione inusuale assunta è infatti sempre possibile uscirne in tempo utile mantenendo la calma e insistendo sui comandi.'
+		],
+		correct_answer_index: 1
+	}
+];
+
+const paraglidingQuestions: Questions = [
+	{
+		id: '2097',
+		section: 'AERODINAMICA',
+		text: 'Se a seguito di una parziale "chiusura" del parapendio la sua superficie alare si riduce:',
+		answers: [
+			'il carico alare rimane lo stesso.',
+			'il carico alare aumenta.',
+			'il carico alare si riduce.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7017',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "A quale scopo si utilizza l'acceleratore in parapendio?",
+		answers: [
+			"Per aumentare l'efficienza suolo in condizioni di vento contrario.",
+			'Per aumentare il tasso di caduta e ridurre la velocità orizzontale.',
+			"Per aumentare l'angolo di assetto in condizioni di turbolenza."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7036',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Quando è necessario controllare che i cordini del parapendio non siano attorcigliati o aggrovigliati?',
+		answers: [
+			"Dopo aver gonfiato, sollevato e frenato quanto basta l'ala in fase di decollo.",
+			'Subito dopo essere atterrati prima di riporre il parapendio.',
+			"Durante la preparazione dell'ala per il decollo."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7038',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Immediatamente prima di effettuare un decollo in parapendio è necessario eseguire i controlli di sicurezza che sono:',
+		answers: [
+			'scarpe allacciate, selletta allacciata e regolata come previsto, bretelle e cordini correttamente predisposti ed impugnati, ala in posizione corretta, casco allacciato, vento e condizioni meteo favorevoli, spazio aereo libero.',
+			"casco e guanti indossati, terreno sgombro ed adatto, cassoni dell'ala aperti, vento favorevole e spazio aereo libero.",
+			"moschettoni o maillons serrati, integrità dell'ala verificata, selletta correttamente collegata all'ala, freni liberi."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7039',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Nel parapendio oltre a curare che la posizione del pilota risulti in volo quella corretta, è indispensabile, affinché l'ala mantenga le caratteristiche garantite dall'omologazione, verificare che il tipo di selletta usato sia compatibile e che vengano rispettate le seguenti disposizioni:",
+		answers: [
+			'regolare la selletta per ottenere che la distanza tra le bretelle (destra e sinistra) sia sempre superiore a 40 cm.',
+			'regolare la selletta in modo che il pilota possa comunque arrivare ad afferrare i cordini anteriori esterni ben sopra i maillons.',
+			'regolare la selletta in modo che la distanza tra le bretelle (destra e sinistra) nonché tra i maillons ed il piano della selletta sia quella prevista e riportata sulla targhetta di omologazione.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7040',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Se ci rendiamo conto che il nostro parapendio è umido, quali accorgimenti dobbiamo adottare durante il volo:',
+		answers: [
+			'effettuare le "orecchie" per scendere più velocemente.',
+			'non ci sono particolari accorgimenti da adottare, perché la vela umida non presenta alcun problema di assetto.',
+			"pilotare l'ala con dolcezza rimanendo nella fascia alta delle velocità."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7051',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Il parapendio è un mezzo che presenta il vantaggio di poter girare abbastanza stretto da non uscire da una eventuale termica anche se di modeste dimensioni. Quali delle seguenti opzioni è preferibile per sfruttare meglio questo tipo di condizioni?',
+		answers: [
+			'Scegliere un ottimo compromesso tra inclinazione laterale e tasso di caduta che consenta comunque di non uscire dalla termica, tenendo conto del suo andamento verticale.',
+			'Eseguire comunque virate più piatte possibile per ottenere il minimo tasso di caduta.',
+			'Effettuare degli "otto" in modo tale da rimanere entro i limiti della termica stessa.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7052',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "E' possibile provare l'avvicinamento allo stallo in parapendio e con quale tecnica per garantirsi adeguati margini di sicurezza?",
+		answers: [
+			'Si, effettuandolo solo in quota indipendentemente dal modo in cui si interviene sui comandi.',
+			'No, tutto ciò che ha a che vedere con lo stallo comunque non può essere effettuato mantenendo adeguati margini di sicurezza in quanto induce sicuramente configurazioni inusuali.',
+			"Si, durante un corso SIV, seguiti da istruttore qualificato volando sull'acqua ed effettuandolo con azione dolce e progressiva sui comandi sino al limite dello stallo, provvedendo ad un immediato ricupero delle condizioni normali di volo prima che l'ala collassi bruscamente dietro al pilota."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7053',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Come si riconosce uno stallo paracadutale del parapendio?',
+		answers: [
+			"Ala perfettamente gonfia, velocità all'aria praticamente nulla, tasso di caduta elevato.",
+			"Ala perfettamente gonfia, velocità all'aria praticamente nulla, tasso di caduta normale, forti vibrazioni sui comandi.",
+			"Ala con chiusura laterale, velocità all'aria praticamente nulla, tendenza dell'ala all'autorotazione."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7054',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'In volo con il parapendio può accadere che accidentalmente si raggiunga lo stallo volando troppo lenti. Per una corretta rimessa, il pilota dovrà:',
+		answers: [
+			"a stallo avvenuto rilasciare immediatamente e velocemente i comandi per poi trazionarli bruscamente durante l'abbattimento in avanti dell'ala.",
+			"a stallo avvenuto mantenere i comandi affondati, attendere guardando verso l'alto il ritorno dell'ala sulla verticale, quindi rilasciare gradualmente e simmetricamente i comandi pronto ad intervenire per gestire il pendolamento in avanti.",
+			'a stallo avvenuto rilasciare dolcemente i comandi, iniziando se possibile una virata per acquisire velocità.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7055',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Quali sono le manovre di discesa rapida in parapendio?',
+		answers: [
+			'Effettuare virate continue che consentono di aumentare il carico alare.',
+			"Fare volare l'ala in condizioni di stallo.",
+			'Le "orecchie", i "wing over" e la spirale picchiata.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7056',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Qual è il risultato di una simmetrica e leggera tensione esercitata sugli elevatori posteriori del parapendio?',
+		answers: [
+			'Aumento della velocità e diminuzione della portanza.',
+			"Variazione dell'assetto, dell'incidenza, della velocità.",
+			'Diminuzione della sola incidenza.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7057',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'È possibile in parapendio pilotare facendo uso dei soli elevatori posteriori?',
+		answers: ['Si.', 'Si, ma non è possibile variare la velocità sulla traiettoria.', 'No.'],
+		correct_answer_index: 0
+	},
+	{
+		id: '7058',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Il pilota che agisce sull'acceleratore sa di poter:",
+		answers: [
+			"variare l'assetto, l'incidenza e la velocità dell'ala entro limiti ben precisi.",
+			"variare quanto vuole la velocità dell'ala agendo su assetto ed incidenza.",
+			'variare consistentemente la pendenza della traiettoria in quanto riesce a produrre ampie variazioni di incidenza.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7059',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'In volo rettilineo in uscita da una virata, se per effetto di una sovracorrezione si innescano oscillazioni laterali del parapendio il pilota dovrà:',
+		answers: [
+			'cercare di smorzarle insistendo ad agire sui comandi in contro fase.',
+			'rilasciare completamente i comandi per qualche secondo e poi iniziare una virata accentuata a destra o sinistra.',
+			"rallentare trazionando con una certa decisione ed in modo simmetrico i comandi sino ad ottenere la stabilizzazione dell'ala."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7060',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "La corretta sequenza in finale per l'atterraggio in parapendio, in condizioni di vento moderato, è:",
+		answers: [
+			"massima velocità all'aria sino a circa un metro dal suolo quindi intervento deciso sui comandi per provocare lo stallo.",
+			"massima velocità all'aria possibile sino a circa 4 o 5 metri dal suolo, primo intervento sui comandi per diminuire velocità e pendenza (freni trazionati circa al 20%), graduale ma completa frenata in prossimità del suolo sino al contatto.",
+			'regime di minimo tasso di caduta sino a circa due metri dal suolo quindi graduale intervento sui comandi sino a provocare lo stallo.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7061',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Nella zona di decollo abbiamo vento sufficiente a consentire un gonfiaggio fronte vela ma il vento è laterale (25 gradi) rispetto alla massima pendenza del terreno.',
+		answers: [
+			'Predisponiamo la vela per il gonfiaggio lungo la massima pendenza per sfruttarla al meglio.',
+			'Orientiamo la vela contro vento per gonfiarla e successivamente eseguiamo la corsa di decollo lungo la massima pendenza.',
+			'Orientiamo la vela contro vento per gonfiarla e successivamente decolliamo lungo questa direzione.'
+		],
+		correct_answer_index: 1
+	},
+
+	{
+		id: '8001',
+		section: 'MATERIALI',
+		text: 'È più preoccupante un taglio sulla superficie del parapendio in corrispondenza:',
+		answers: [
+			"della parte anteriore centrale dell'estradosso.",
+			"della parte posteriore laterale dell'estradosso.",
+			"della parte posteriore laterale dell'intradosso."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '8002',
+		section: 'MATERIALI',
+		text: 'I cordini del parapendio devono essere di materiale:',
+		answers: [
+			'più elastico possibile.',
+			'più anelastico e resistente possibile.',
+			"più resistente possibile indipendentemente dall'elasticità."
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '8003',
+		section: 'MATERIALI',
+		text: 'Durante il volo in parapendio sono sottoposti al maggior carico i cordini:',
+		answers: ['anteriori.', 'posteriori.', 'laterali.'],
+		correct_answer_index: 0
+	},
+	{
+		id: '8004',
+		section: 'MATERIALI',
+		text: 'Il parapendio è generalmente fabbricato con materiale "rip-stop". Che cosa significa?',
+		answers: [
+			'Che il tessuto stesso non può strapparsi, ma solo tagliarsi.',
+			'Che un eventuale taglio o strappo nel tessuto ha molte probabilità di estendersi pericolosamente.',
+			'Che un eventuale taglio o strappo nel tessuto ha poche probabilità di estendersi pericolosamente.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '8005',
+		section: 'MATERIALI',
+		text: 'Il tessuto con cui è generalmente costruito un parapendio deve essere:',
+		answers: [
+			"resistente all'usura, molto elastico e gas permeabile.",
+			"resistente all'usura, anelastico e gas permeabile.",
+			"resistente all'usura, anelastico e non gas permeabile."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '8006',
+		section: 'MATERIALI',
+		text: 'Quali agenti esterni danneggiano maggiormente il tessuto di un parapendio rendendolo fragile e gas-permeabile?',
+		answers: [
+			"I raggi ultravioletti e l'umidità.",
+			"I raggi infrarossi e l'umidità.",
+			'I raggi infrarossi ed il caldo secco.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '8007',
+		section: 'MATERIALI',
+		text: 'Se il tessuto di un parapendio è divenuto poroso:',
+		answers: [
+			'risulta compromesso solo il suo aspetto.',
+			'risultano un poco degradate solo le sue prestazioni.',
+			'risultano degradate le sue prestazioni e compromessa la sua affidabilità.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '8008',
+		section: 'MATERIALI',
+		text: 'Dovendo riporre un parapendio si avrà cura di farlo:',
+		answers: [
+			'solo se la vela è asciutta ed in luogo secco, lontano da fonti di calore ed al riparo dalla luce solare.',
+			'solo se la vela è asciutta, in ambiente moderatamente umido e caldo, al riparo dalla luce solare.',
+			"anche se è un poco umido, purché in luogo caldo, lasciando il sacco contenitore aperto onde consentire all'umidità di evaporare."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '8009',
+		section: 'MATERIALI',
+		text: "Il cordino di un parapendio è rimasto impigliato ed il kevlar che ne costituisce l'anima è ora privo di rivestimento, ma integro:",
+		answers: [
+			'provvisoriamente lo accorciamo annodandolo per evitare che la parte scoperta sia soggetta a trazione.',
+			'provvisoriamente lo rivestiamo con nastro isolante onde evitare di esporre alla luce il tratto di kevlar scoperto.',
+			'provvisoriamente aggiungiamo con opportuni nodi un altro pezzo di cordino al tratto scoperto per creare un rinforzo.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '9023',
+		section: 'SICUREZZA DEL VOLO',
+		text: 'Quali conseguenze in volo si possono avere per non aver agganciato i cosciali della selletta del parapendio?',
+		answers: [
+			'Una posizione molto scomoda, ma il rischio è minimo se il pettorale è ben agganciato.',
+			'Una situazione di gravissimo pericolo quale la fuoriuscita dalla selletta e la caduta.',
+			'Una situazione di grave pericolo sempre che non ci si riesca ad aggrappare saldamente al fascio funicolare.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '9024',
+		section: 'SICUREZZA DEL VOLO',
+		text: "Se durante il decollo in parapendio si constata che l'ala non si è gonfiata correttamente è preferibile per motivi di sicurezza:",
+		answers: [
+			'accelerare la corsa agendo sui comandi per ottenere il corretto gonfiaggio prima dello stacco.',
+			'agire sui freni e interrompere il decollo, tenendo presente che il parapendio offre il vantaggio di una possibile interruzione di decollo senza conseguenze.',
+			"proseguire nella manovra di decollo e dopo che esso è avvenuto ripristinare per prima cosa con l'uso dei comandi la configurazione normale dell'ala."
+		],
+		correct_answer_index: 1
 	},
 	{
 		id: '9027',
@@ -4922,104 +4699,334 @@ const questions: Questions = [
 			'affondare con decisione un freno solo, pompare simmetricamente con i freni, spingere in ultima analisi con decisione in avanti le bretelle anteriori.'
 		],
 		correct_answer_index: 1
-	},
-	// {
-	// 	id: '9037',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: "Decollo in deltaplano con vento sostenuto. L'utilizzo di un assistente che tocchi il delta all'inizio della rincorsa è rischioso perché:",
-	// 	answers: [
-	// 		"l'assistente può essere trascinato giù dalla rampa o addirittura essere portato in volo.",
-	// 		'non tutti gli assistenti danno adeguate garanzie di comportamento anche se ben istruiti dal pilota.',
-	// 		"l'assistente, anche se esperto non può avere la sensibilità rispetto al mezzo che invece ha il pilota e quindi può imprimergli un assetto e una posizione non ottimali."
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '9038',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: 'Il mancato o non corretto aggancio del pilota al deltaplano comporta:',
-	// 	answers: [
-	// 		'gravissime conseguenze sempre.',
-	// 		'la necessità di atterrare al più presto.',
-	// 		'la necessità di ridurre le manovre allo stretto indispensabile per non precipitare.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
-	// {
-	// 	id: '9039',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: 'Se per avaria strutturale il dispositivo antidrappo non dovesse entrare in funzione quando necessario, una volta innescata la caduta a drappo:',
-	// 	answers: [
-	// 		"è bene cercare prima di uscirne con l'uso dei comandi e del peso, non c'è fretta per l'uso del paracadute di soccorso.",
-	// 		'è bene fare uso immediato del paracadute di soccorso, prima che la velocità verticale sia troppo elevata.',
-	// 		"è bene attendere che la velocità di caduta sia molto elevata prima di aprire il paracadute di soccorso, al fine di ottenerne l'immediata apertura."
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '9040',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: 'Le sollecitazioni che rendono pericoloso il looping eseguito con il deltaplano sono indotte:',
-	// 	answers: [
-	// 		'solo dalla velocità che è necessaria assumere prima di iniziare la manovra di cabrata.',
-	// 		'solo dalle accelerazioni cui è sottoposto il mezzo durante tutta la manovra.',
-	// 		'dalla velocità elevata che è necessario assumere prima di iniziare la manovVra di cabrata e dalle accelerazioni cui è sottoposto il deltaplano durante tutta la manovra.'
-	// 	],
-	// 	correct_answer_index: 2
-	// },
-	// {
-	// 	id: '9041',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: "Che cosa s'intende per tumbling del deltaplano?",
-	// 	answers: [
-	// 		"Una brusca rotazione incontrollata attorno all'asse d'imbardata.",
-	// 		"Una brusca rotazione incontrollata attorno all'asse trasversale.",
-	// 		"Una brusca rotazione incontrollata attorno all'asse longitudinale."
-	// 	],
-	// 	correct_answer_index: 1
-	// },
-	// {
-	// 	id: '9042',
-	// 	section: 'SICUREZZA DEL VOLO',
-	// 	text: 'Quali elementi, tra i seguenti, contribuiscono a provocare il tumbling del deltaplano?',
-	// 	answers: [
-	// 		"Un angolo d'incidenza troppo elevato associato a condizioni di turbolenza.",
-	// 		'Una velocità troppo elevata in condizioni di forte turbolenza.',
-	// 		'Virate in condizioni di ascendenza.'
-	// 	],
-	// 	correct_answer_index: 0
-	// },
+	}
+];
+
+const deltaQuestions: Questions = [
 	{
-		id: '9043',
-		section: 'SICUREZZA DEL VOLO',
-		text: "E' vero che praticando il Volo Libero il pilota deve usare il paracadute di soccorso solo in ultima analisi e cioè quando non è possibile ripristinare altrimenti condizioni di volo nelle quali il mezzo risulti pilotabile sino a un atterraggio sicuro?",
+		id: '7062',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Decollo in deltaplano. Tra i controlli di sicurezza pre-decollo, uno in particolare risulta essenziale e deve essere eseguito con una tecnica ed una cura particolare perché ha causato svariati e gravi incidenti:',
 		answers: [
-			"No, questa è una credenza sbagliata perché il paracadute di soccorso va usato sempre e al più presto possibile quando l'ala assume una configurazione inusuale.",
-			"Si, tenendo presente che non c'è alcuna fretta nell'utilizzarlo perché non ha limiti per l'apertura.",
-			'Si, tenendo presente comunque che dal momento in cui si decide di usarlo è bene farlo al più presto per consentirgli di aprirsi in tempo utile ed entro i suoi limiti strutturali.'
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '9044',
-		section: 'SICUREZZA DEL VOLO',
-		text: "Oltre al caso di malore del pilota, in quale di queste situazioni è utile l'apertura del paracadute di emergenza e come deve essere fatta?",
-		answers: [
-			"In forte turbolenza qualora risulti difficile il controllo del deltaplano o del parapendio, tirando con decisione la maniglia verso l'alto.",
-			"In caso ci si trovi all'interno di una corrente ascensionale tanto forte da trascinarci in nube, tirando la maniglia con decisione verso il basso in modo che il paracadute si allontani più possibile dall'ala.",
-			"In caso di rottura strutturale non potendo più controllare l'apparecchio o a seguito di configurazione inusuale che si riveli totalmente irrecuperabile con l'uso dei comandi e del peso, tirando con decisione la maniglia in modo che il paracadute si allontani più possibile dall'ala."
-		],
-		correct_answer_index: 2
-	},
-	{
-		id: '9045',
-		section: 'SICUREZZA DEL VOLO',
-		text: "Se è vero che il paracadute di soccorso, come emerge inconfutabilmente da dati statistici, funziona nella quasi totalità dei casi, per quale motivo è comunque raccomandato il suo uso solo in casi in cui esso costituisce l'ultima risorsa disponibile?",
-		answers: [
-			'Perché le statistiche non sono attendibili, e il suo funzionamento è aleatorio.',
-			"Perché pur garantendo un'altissima probabilità di funzionamento non è, nella quasi totalità dei casi, direzionabile e quindi non ci garantisce la scelta del punto di atterraggio.",
-			'Perché è quasi sempre inutile usarlo anche se funziona, qualsiasi sia la configurazione inusuale assunta è infatti sempre possibile uscirne in tempo utile mantenendo la calma e insistendo sui comandi.'
+			'il controllo del posizionamento del deltaplano.',
+			"il controllo dell'avvenuto aggancio del pilota al deltaplano.",
+			'il controllo del corretto ripiegamento del paracadute di emergenza.'
 		],
 		correct_answer_index: 1
+	},
+	{
+		id: '7063',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Come è necessario verificare nel miglior modo l'avvenuto corretto aggancio del pilota al deltaplano?",
+		answers: [
+			"Facendo sorreggere la chiglia del deltaplano da un assistente, disponendosi in posizione orizzontale di volo sospesi all'aggancio, verificando oltre all'aggancio stesso la posizione del corpo rispetto alla barra.",
+			"Agganciando il moschettone e verificando attentamente con un controllo visivo che l'aggancio stesso sia correttamente avvenuto.",
+			"Facendo verificare dall'assistente che l'aggancio sia stato correttamente effettuato."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7064',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Quali precauzioni si devono adottare se si intende decollare in deltaplano con vento sostenuto?',
+		answers: [
+			"Durante la fase immediatamente precedente il decollo far tenere l'estremità alare da un solo assistente.",
+			"Accertarsi che durante il decollo nessuno degli assistenti trattenga l'ala.",
+			'Provvedere a che gli assistenti spingano adeguatamente la chiglia in fase di decollo.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7065',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Se il vento è angolato entro i 45° rispetto alla direzione decollo, è possibile decollare in deltaplano e come?',
+		answers: [
+			'No, anche se la componente è moderata.',
+			'Si, se la componente è limitata, correndo lungo la linea di massima pendenza con la prua parzialmente orientata contro vento.',
+			'Si, anche se la componente è sostenuta, purché si corra contro vento.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7066',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Se il pilota intraprende la corsa di decollo con il deltaplano molto cabrato:',
+		answers: [
+			'il decollo avviene prima ed è possibile sorvolare con più margine eventuali ostacoli sulla traiettoria.',
+			'il decollo avviene a velocità più bassa ed è più semplice il controllo del deltaplano dopo il decollo.',
+			'il decollo avviene con incidenza troppo elevata, la traiettoria che ne risulta è ripida ed è alto il rischio di stallo.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7067',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "È possibile l'interruzione di decollo in deltaplano e quali rischi comporta eventualmente?",
+		answers: [
+			'Si, solo in caso di estrema necessità, con alta probabilità di danni alla struttura e conseguenze per il pilota.',
+			'Si, ogniqualvolta lo si ritenga necessario senza particolari problematiche se si conosce e si applica la tecnica corretta.',
+			'Si, purché non la si effettui quando si è prossimi allo stacco e si abbia una discreta esperienza.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7068',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Quando è opportuno che il pilota si sistemi nell'imbrago dopo il decollo in deltaplano?",
+		answers: [
+			'Il più presto possibile dopo lo stacco.',
+			'Acquisito il completo controllo della velocità e della direzione, lontano dal pendio.',
+			"Non esistono limitazioni o tecniche particolari per sistemarsi nell'imbrago."
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7069',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Come si può variare l'angolo d'incidenza in volo con il deltaplano?",
+		answers: [
+			'Solo agendo sul dispositivo chiamato "overdrive".',
+			'Appoggiando il peso del pilota sulla barra, indi spingendola o trazionandola.',
+			'Agendo sulla barra di controllo con movimenti di spinta o trazione.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7070',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Individuare la corretta sequenza per effettuare una virata in deltaplano:',
+		answers: [
+			'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, spinta sulla barra per coordinare la virata, riposizionamento del corpo in posizione centrata rispetto alla barra.',
+			'presa di velocità, spostamento laterale del corpo rispetto alla barra parallelamente alla chiglia, riposizionamento del corpo in posizione centrata rispetto alla barra.',
+			"presa di velocità, spinta asimmetrica per ottenere una rotazione del deltaplano attorno all'asse verticale, contemporaneo spostamento laterale del corpo rispetto alla barra, riposizionamento del corpo in posizione centrata rispetto alla barra."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7071',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "Quale errore di manovra causa generalmente una scivolata d'ala del deltaplano?",
+		answers: [
+			"Mancata coordinazione dei movimenti durante l'esecuzione di una virata.",
+			"Mancata coordinazione dei movimenti ed insufficiente spinta sulla barra durante l'esecuzione di una virata.",
+			'Eccessiva spinta sulla barra durante una virata.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7072',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Come si esegue il controllo di rollio in deltaplano?',
+		answers: [
+			"Facendo semplicemente ruotare l'asse del corpo rispetto alla barra.",
+			'Spostando lateralmente il corpo e facendo nello stesso tempo ruotare il suo asse rispetto alla barra.',
+			'Spostando lateralmente il corpo rispetto alla barra, sempre mantenendolo parallelo alla chiglia.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7073',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Un ala rigida vira:',
+		answers: [
+			"grazie all'azione di comandi aerodinamici oltre ché allo spostamento del peso.",
+			"grazie all'azione dei comandi aerodinamici.",
+			'grazie allo spostamento del peso.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7074',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'A distanza di sicurezza dal terreno, come si esegue correttamente una prova di stallo in deltaplano?',
+		answers: [
+			"Si spinge dolcemente e gradualmente sulla barra per aumentare l'angolo di incidenza sino allo stallo ed a stallo avvenuto si ottiene la rimessa riaumentando la velocità al mezzo.",
+			"Si spinge in avanti sui montanti per ottenere angoli d'incidenza più elevati, e si mantiene questa posizione per almeno 30 secondi.",
+			"Dopo adeguata presa di velocità si spinge sulla barra con decisione e rapidità per ottenere un brusco aumento dell'incidenza."
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7075',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Come deve comportarsi il pilota di deltaplano una volta entrato in termica se vuole sfruttarla?',
+		answers: [
+			'Mantenere il regime di minimo tasso di caduta ed effettuare delle virate di 360° per rimanere in termica.',
+			'Mantenere il regime di massima efficienza ed effettuare delle virate di 360° per rimanere in termica.',
+			'Mantenere sempre la minima velocità possibile ed effettuare delle virate accentuate di 360° per rimanere in termica.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7076',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Cosa è il tumbling?',
+		answers: [
+			'È un manovra acrobatica.',
+			'È una manovra di discesa rapida.',
+			'È un rovesciamento in avanti del delta che si ha a seguito di fortissime turbolenze quali quelle dovute ai rotori.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '7077',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'Come è possibile intervenire per aumentare la velocità di trim del deltaplano?',
+		answers: [
+			'Spostando indietro il punto di aggancio del pilota rispetto alla struttura.',
+			'Spostando in avanti il punto di aggancio del pilota rispetto alla struttura.',
+			'Spostando in alto il punto di aggancio del pilota rispetto alla struttura.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '7078',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: "La corretta sequenza in finale per l'atterraggio con il deltaplano in condizioni di vento moderato è:",
+		answers: [
+			'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino al momento di "aprire" per stallare il deltaplano alla minima velocità di sostentamento possibile.',
+			'raccordare adeguatamente a 4 o 5 metri dal suolo, mantenendo poi una traiettoria lievemente picchiata sino al momento di "aprire" per stallare il deltaplano ad una velocità ancora ben superiore alla minima di sostentamento.',
+			'raccordare adeguatamente in prossimità del suolo, mantenendo una traiettoria orizzontale sino in prossimità del punto di contatto prestabilito quindi "aprire" con decisione per stallare il deltaplano, indipendentemente dalla velocità raggiunta.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '7079',
+		section: 'TECNICA DI PILOTAGGIO',
+		text: 'In quale momento ci si porta in posizione verticale per atterrare in deltaplano?',
+		answers: [
+			"Appena si avverte che il deltaplano risente dell'effetto suolo dopo aver raccordato in finale per l'atterraggio.",
+			'In finale per l\'atterraggio, durante la fase di raccordo in prossimità del suolo, prima di "aprire" per stallare il deltaplano.',
+			"Più tardi possibile durante l'apertura per stallare il deltaplano."
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '8011',
+		section: 'MATERIALI',
+		text: 'Che cosa è necessario verificare in corrispondenza di piombature di cavi e tiranti del deltaplano?',
+		answers: [
+			'Che i cavi ed i tiranti non siano rotti sotto la piombatura.',
+			'Che le piombature siano semplicemente in buono stato.',
+			'Che le piombature siano in buono stato ed i cavi o tiranti non presentino segni di logoramento in vicinanza delle piombature stesse.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '8012',
+		section: 'MATERIALI',
+		text: 'Se ci accorgiamo che qualche tirante del deltaplano è sfilacciato o logoro:',
+		answers: [
+			'lo sostituiamo immediatamente prima di riandare in volo.',
+			'lo ripariamo alla meglio non potendolo sostituire immediatamente.',
+			'andiamo in volo facendo attenzione a non sollecitare la struttura con particolari manovre.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '8013',
+		section: 'MATERIALI',
+		text: "Durante l'ultimo volo in deltaplano abbiamo effettuato un atterraggio pesante. Il cross bar ed un montante si sono piegati:",
+		answers: [
+			'riandiamo in volo avendo sostituito il montante e raddrizzato perfettamente il cross bar.',
+			'riandiamo in volo solo dopo aver sostituito il montante ed il cross bar con ricambi originali.',
+			'riandiamo in volo avendo raddrizzato perfettamente montante e cross bar.'
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '8014',
+		section: 'MATERIALI',
+		text: 'Il materiale di cui sono rivestite le superfici di un deltaplano si deteriora particolarmente se esposto a lungo a:',
+		answers: ['raggi infrarossi.', 'raggi ultravioletti.', 'clima particolarmente secco.'],
+		correct_answer_index: 1
+	},
+	{
+		id: '8015',
+		section: 'MATERIALI',
+		text: 'Se si deve riporre il deltaplano per un lungo periodo dovremo aver cura di:',
+		answers: [
+			'farlo in apposita sacca quando siamo certi che è perfettamente asciutto, sistemandolo in luogo meno umido possibile, lontano dalla luce del sole e da fonti di calore.',
+			"sistemarlo in apposita sacca dopo aver effettuato l'ultimo volo, riporlo su appositi supporti fissati alle pareti di uno scantinato dove non può essere raggiunto dalla luce del sole.",
+			'lasciarlo ripiegato senza sacca, sistemandolo possibilmente in uno scantinato o in garage dove non può essere raggiunto dalla luce del sole, possibilmente su appositi supporti fissati alle pareti.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '8016',
+		section: 'MATERIALI',
+		text: 'Se in corrispondenza di qualche elemento costituente il corredo di tiranteria o bulloneria del deltaplano si riscontra presenza di ruggine:',
+		answers: [
+			'è necessario prima di volare rimuoverla prontamente usando appositi prodotti antiruggine sul particolare interessato.',
+			"è possibile comunque intraprendere il volo purché si sia accertata l'integrità del particolare interessato.",
+			'è indispensabile sostituire il particolare in questione con altro idoneo di identiche caratteristiche, prima di intraprendere qualsiasi tipo di volo.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '9037',
+		section: 'SICUREZZA DEL VOLO',
+		text: "Decollo in deltaplano con vento sostenuto. L'utilizzo di un assistente che tocchi il delta all'inizio della rincorsa è rischioso perché:",
+		answers: [
+			"l'assistente può essere trascinato giù dalla rampa o addirittura essere portato in volo.",
+			'non tutti gli assistenti danno adeguate garanzie di comportamento anche se ben istruiti dal pilota.',
+			"l'assistente, anche se esperto non può avere la sensibilità rispetto al mezzo che invece ha il pilota e quindi può imprimergli un assetto e una posizione non ottimali."
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '9038',
+		section: 'SICUREZZA DEL VOLO',
+		text: 'Il mancato o non corretto aggancio del pilota al deltaplano comporta:',
+		answers: [
+			'gravissime conseguenze sempre.',
+			'la necessità di atterrare al più presto.',
+			'la necessità di ridurre le manovre allo stretto indispensabile per non precipitare.'
+		],
+		correct_answer_index: 0
+	},
+	{
+		id: '9039',
+		section: 'SICUREZZA DEL VOLO',
+		text: 'Se per avaria strutturale il dispositivo antidrappo non dovesse entrare in funzione quando necessario, una volta innescata la caduta a drappo:',
+		answers: [
+			"è bene cercare prima di uscirne con l'uso dei comandi e del peso, non c'è fretta per l'uso del paracadute di soccorso.",
+			'è bene fare uso immediato del paracadute di soccorso, prima che la velocità verticale sia troppo elevata.',
+			"è bene attendere che la velocità di caduta sia molto elevata prima di aprire il paracadute di soccorso, al fine di ottenerne l'immediata apertura."
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '9040',
+		section: 'SICUREZZA DEL VOLO',
+		text: 'Le sollecitazioni che rendono pericoloso il looping eseguito con il deltaplano sono indotte:',
+		answers: [
+			'solo dalla velocità che è necessaria assumere prima di iniziare la manovra di cabrata.',
+			'solo dalle accelerazioni cui è sottoposto il mezzo durante tutta la manovra.',
+			'dalla velocità elevata che è necessario assumere prima di iniziare la manovVra di cabrata e dalle accelerazioni cui è sottoposto il deltaplano durante tutta la manovra.'
+		],
+		correct_answer_index: 2
+	},
+	{
+		id: '9041',
+		section: 'SICUREZZA DEL VOLO',
+		text: "Che cosa s'intende per tumbling del deltaplano?",
+		answers: [
+			"Una brusca rotazione incontrollata attorno all'asse d'imbardata.",
+			"Una brusca rotazione incontrollata attorno all'asse trasversale.",
+			"Una brusca rotazione incontrollata attorno all'asse longitudinale."
+		],
+		correct_answer_index: 1
+	},
+	{
+		id: '9042',
+		section: 'SICUREZZA DEL VOLO',
+		text: 'Quali elementi, tra i seguenti, contribuiscono a provocare il tumbling del deltaplano?',
+		answers: [
+			"Un angolo d'incidenza troppo elevato associato a condizioni di turbolenza.",
+			'Una velocità troppo elevata in condizioni di forte turbolenza.',
+			'Virate in condizioni di ascendenza.'
+		],
+		correct_answer_index: 0
 	}
 ];

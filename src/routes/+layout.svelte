@@ -13,6 +13,11 @@
 </script>
 
 <svelte:head>
+	<title>Esame Parapendio</title>
+	<meta
+		name="description"
+		content="L'app per la preparazione all'esame di parapendio e/o deltaplano"
+	/>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 

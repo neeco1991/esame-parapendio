@@ -52,8 +52,10 @@
 
 {#if !exam.isEnded}
 	<QuestionBox
-		onComplete={() => {
-			points += pointsBySection[examQuestions[exam.questionIndex].section];
+		onComplete={(correct: boolean) => {
+			if (correct) {
+				points += pointsBySection[examQuestions[exam.questionIndex].section];
+			}
 			exam.incrementQuestionIndex();
 			if (exam.questionIndex == examQuestions.length) {
 				exam.setEnded(true);

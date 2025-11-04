@@ -28,7 +28,7 @@
 		isCorrect = result;
 
 		if (result) {
-			setTimeout(onComplete, 1000);
+			setTimeout(() => onComplete(true), 1000);
 		}
 	}
 
@@ -38,7 +38,7 @@
 			return;
 		}
 		if (isAnswered && !isCorrect) {
-			onComplete();
+			onComplete(false);
 		}
 	}
 

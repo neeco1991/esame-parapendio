@@ -7,9 +7,7 @@
 <div class="flex h-full flex-col justify-between">
 	<div class="mt-4 flex w-full flex-col items-center justify-center">
 		<Logo className="w-24 h-24" />
-		<div class="text-center">
-			Disclaimer: questa applicazione è uno strumento di studio <b>NON</b> ufficiale
-		</div>
+		<div>Disclaimer: questa applicazione è uno strumento di studio <b>NON</b> ufficiale</div>
 	</div>
 
 	<div class="flex flex-col space-y-4">
